@@ -13,6 +13,8 @@ namespace HypNot.Behaviours.UI
 
       private const string m_playerTag = "Player";
 
+      private float m_moveSpeed = 4;
+
       private void Start()
       {
          float l_rotation = transform.rotation.eulerAngles.z;
@@ -47,7 +49,7 @@ namespace HypNot.Behaviours.UI
 
       private void ApplyDirection()
       {
-         m_target.transform.position += (Vector3) m_direction * Time.deltaTime * 2;
+         m_target.transform.position += (Vector3) m_direction * Time.deltaTime * m_moveSpeed;
       }
 
       public void OnPointerDown(PointerEventData eventData)
