@@ -7,9 +7,11 @@ namespace HypNot.Behaviours.UI
    {
       private Vector2 m_direction;
 
-      private Camera m_camera;
+      private GameObject m_target;
 
       private bool m_isPressed;
+
+      private const string m_playerTag = "Player";
 
       private void Start()
       {
@@ -32,7 +34,7 @@ namespace HypNot.Behaviours.UI
             m_direction = Vector2.left;
          }
 
-         m_camera = Camera.main;
+         m_target = GameObject.FindGameObjectWithTag(m_playerTag);
       }
 
       private void Update()
@@ -45,7 +47,7 @@ namespace HypNot.Behaviours.UI
 
       private void ApplyDirection()
       {
-         m_camera.transform.position += (Vector3) m_direction * Time.deltaTime * 2;
+         m_target.transform.position += (Vector3) m_direction * Time.deltaTime * 2;
       }
 
       public void OnPointerDown(PointerEventData eventData)
