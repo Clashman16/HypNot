@@ -75,11 +75,17 @@ namespace HypNot.Spawners
 
          p_hypnotizedPerson.HasNeighbor = l_nearbySpot != null && l_nearbySpot.IsSlotOccupied;
 
-         p_hypnotizedPerson.ManaCount = m_manaRandomizer.Random(p_hypnotizedPerson.HasNeighbor);
+         int l_manaCount = MapManagerSingleton.Instance.HypnotizedPersonMana[1] == 0 ? 1 : m_manaRandomizer.Random(p_hypnotizedPerson.HasNeighbor);
+         p_hypnotizedPerson.FirstManaCount = l_manaCount;
+         p_hypnotizedPerson.ManaCount = l_manaCount;
+
+         MapManagerSingleton.Instance.HypnotizedPersonMana[p_hypnotizedPerson.FirstManaCount] += 1;
 
          p_spawnPoint.HypnotizedPerson = p_hypnotizedPerson;
 
-         if(p_mustPickType)
+         p_hypnotizedPerson.SpawnPoint = p_spawnPoint;
+
+         if (p_mustPickType)
          {
             p_hypnotizedPerson.Type = m_characterTypeRandomizer.Random();
          }
