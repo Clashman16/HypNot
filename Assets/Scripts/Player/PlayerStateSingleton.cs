@@ -1,4 +1,5 @@
 using HypNot.Behaviours.Characters;
+using HypNot.Map;
 using UnityEngine;
 
 namespace HypNot.Player
@@ -22,8 +23,6 @@ namespace HypNot.Player
          get => m_firstCitizenType;
       }
 
-      private const int m_characterTypeEnumSize = 15;
-
       public static PlayerStateSingleton Instance
       {
          get
@@ -40,7 +39,7 @@ namespace HypNot.Player
       {
          m_canSendCitizen = true;
 
-         m_firstCitizenType = (CharacterType) Random.Range(0, m_characterTypeEnumSize);
+         m_firstCitizenType = (CharacterType) Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
       }
    }
 }
