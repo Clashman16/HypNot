@@ -5,7 +5,7 @@ namespace HypNot.Spawners
 {
    public class ObjectRecycler
    {
-      private const int m_maxObjectInQueue = 5;
+      private const int m_maxObjectInQueue = 8;
 
       private Queue<GameObject> m_objectsRecycleBin;
 
@@ -48,6 +48,22 @@ namespace HypNot.Spawners
       public void Reset()
       {
          m_objectsRecycleBin.Clear();
+      }
+
+      public void CopyRecycleBin(Queue<GameObject> p_copy)
+      {
+         foreach(GameObject l_go in m_objectsRecycleBin)
+         {
+            p_copy.Enqueue(l_go);
+         }
+      }
+
+      public void PasteRecycleBin(Queue<GameObject> p_paste)
+      {
+         foreach (GameObject l_go in p_paste)
+         {
+            m_objectsRecycleBin.Enqueue(l_go);
+         }
       }
    }
 }

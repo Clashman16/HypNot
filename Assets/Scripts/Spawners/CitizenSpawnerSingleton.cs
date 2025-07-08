@@ -1,5 +1,6 @@
 using HypNot.Behaviours.UI;
 using HypNot.Player;
+using HypNot.Spawners.Utils;
 using Pathfinding;
 using ScriptableObjects;
 using UnityEngine;
@@ -36,6 +37,8 @@ namespace HypNot.Spawners
          if (!IsRecycleBinEmpty)
          {
             l_instantiatedCitizen = RemoveFromRecycleBin();
+
+            l_instantiatedCitizen.transform.position = m_spawnTransform.position;
          }
 
          if (l_instantiatedCitizen == null)
@@ -54,14 +57,14 @@ namespace HypNot.Spawners
             l_instantiatedCitizen = Object.Instantiate(l_citizenResource, m_spawnTransform.position, Quaternion.identity);
 
             l_instantiatedCitizen.GetComponent<Animator>().runtimeAnimatorController = l_database.AnimatorsByName[l_citizenName];
-
-            AIPath l_path = l_instantiatedCitizen.GetComponent<AIPath>();
-
-            l_path.canSearch = true;
-            l_path.canMove = true;
-
-            l_path.destination = p_citizenTarget.position;
          }
+
+         AIPath l_path = l_instantiatedCitizen.GetComponent<AIPath>();
+
+         l_path.canSearch = true;
+         l_path.canMove = true;
+
+         l_path.destination = p_citizenTarget.position;
       }
    }
 }
