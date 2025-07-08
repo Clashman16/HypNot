@@ -1,10 +1,10 @@
+using HypNot.Map;
 using UnityEngine;
 
 namespace HypNot.Behaviours.Characters
 {
    public class HypnotizedPersonDataBehaviour : MonoBehaviour
    {
-      [SerializeField]
       private CharacterType m_type;
 
       private HypnotizedPersonAnimatorBehaviour m_animator;
@@ -25,6 +25,14 @@ namespace HypNot.Behaviours.Characters
          }
       }
 
+      private int m_firstManaCount;
+
+      public int FirstManaCount
+      {
+         get => m_firstManaCount;
+         set => m_firstManaCount = value;
+      }
+
       private int m_manaCount;
 
       public int ManaCount
@@ -34,12 +42,22 @@ namespace HypNot.Behaviours.Characters
          {
             m_manaCount = value;
 
+            if(m_manaCount < 0)
+            {
+               m_manaCount = 0;
+            }
+
             if (m_animator == null)
             {
                m_animator = GetComponent<HypnotizedPersonAnimatorBehaviour>();
             }
 
             m_animator.ManaCount = m_manaCount;
+
+            if (m_manaCount == 0)
+            {
+               GetComponent<HypnotizedPersonTargetBehaviour>().OnPersonSaved();
+            }
          }
       }
 
@@ -49,6 +67,14 @@ namespace HypNot.Behaviours.Characters
       {
          get => m_hasNeighbor;
          set => m_hasNeighbor = value;
+      }
+
+      private HypnotizedPersonSpawnPointBehaviour m_spawnPoint;
+
+      public HypnotizedPersonSpawnPointBehaviour SpawnPoint
+      {
+         get => m_spawnPoint;
+         set => m_spawnPoint = value;
       }
    }
 }
