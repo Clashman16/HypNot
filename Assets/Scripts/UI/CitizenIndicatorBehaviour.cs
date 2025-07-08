@@ -13,6 +13,11 @@ namespace HypNot.Behaviours.UI
 
       private TextMeshProUGUI m_citizenCoutDisplay;
 
+      public TextMeshProUGUI CitizenCoutDisplay
+      {
+         get => m_citizenCoutDisplay;
+      }
+
       public CharacterType Type
       {
          get => m_type;
