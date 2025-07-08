@@ -1,5 +1,6 @@
 using HypNot.Behaviours.Characters;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace HypNot.Map
 {
@@ -33,13 +34,37 @@ namespace HypNot.Map
          get => m_hypnotizedPersonTypes;
       }
 
+      private Dictionary<int, int> m_hypnotizedPersonMana;
+
+      public Dictionary<int, int> HypnotizedPersonMana
+      {
+         get => m_hypnotizedPersonMana;
+      }
+
+      private const int m_hypnotizedPersonManaMax = 4;
+
+      private GameObject m_lastSpawnedCitizen;
+
+      public GameObject LastSpawnedCitizen
+      {
+         get => m_lastSpawnedCitizen;
+         set => m_lastSpawnedCitizen = value;
+      }
+
       private MapManagerSingleton()
       {
          m_hypnotizedPersonTypes = new Dictionary<CharacterType, int>();
 
-         for(int l_i = 0; l_i < m_characterTypeEnumSize; l_i++)
+         m_hypnotizedPersonMana = new Dictionary<int, int>();
+
+         for (int l_i = 0; l_i < m_characterTypeEnumSize; l_i++)
          {
             m_hypnotizedPersonTypes.Add((CharacterType) l_i, 0);
+
+            if(l_i <= m_hypnotizedPersonManaMax)
+            {
+               m_hypnotizedPersonMana.Add(l_i, 0);
+            }
          }
       }
    }

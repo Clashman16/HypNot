@@ -22,6 +22,11 @@ namespace HypNot.Spawners
 
       HypnotizedPersonWaveSpawner m_waveSpawner;
 
+      public HypnotizedPersonWaveSpawner WaveSpawner
+      {
+         get => m_waveSpawner;
+      }
+
       double m_spawnRange;
 
       public HypnotizedPersonSpawnerSingleton() : base()

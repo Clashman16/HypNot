@@ -1,5 +1,7 @@
+using HypNot.Map;
 using HypNot.Player;
 using HypNot.Spawners;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,9 +11,23 @@ namespace HypNot.Behaviours.Characters
    {
       private HypnotizedPersonDataBehaviour m_data;
 
+      public HypnotizedPersonDataBehaviour Data
+      {
+         get => m_data;
+      }
+
+      private List<CitizenBehaviour> m_citizens;
+
+      public List<CitizenBehaviour> Citizens
+      {
+         get => m_citizens;
+      }
+
       private void Start()
       {
          m_data = GetComponent<HypnotizedPersonDataBehaviour>();
+
+         m_citizens = new List<CitizenBehaviour>();
       }
 
       public void OnPointerClick(PointerEventData eventData)
@@ -31,6 +47,34 @@ namespace HypNot.Behaviours.Characters
                PlayerStateSingleton.Instance.CanSendCitizen = false;
             }
          }
+      }
+
+      public void OnPersonSaved()
+      {
+         PlayerScoreSingleton.Instance.Score += 1;
+
+         foreach (CitizenBehaviour l_citizen in m_citizens)
+         {
+            CitizenSpawnerSingleton.Instance.AddToRecycleBin(l_citizen.gameObject);
+         }
+
+         m_citizens.Clear();
+
+         m_data.SpawnPoint.HypnotizedPerson = null;
+
+         CharacterType l_type = m_data.Type;
+
+         int l_typeCount = MapManagerSingleton.Instance.HypnotizedPersonTypes[l_type];
+         MapManagerSingleton.Instance.HypnotizedPersonTypes[l_type] = l_typeCount == 0 ? 0 : l_typeCount - 1;
+
+         int l_mana = m_data.FirstManaCount;
+
+         int l_manaCount = MapManagerSingleton.Instance.HypnotizedPersonMana[l_mana];
+         MapManagerSingleton.Instance.HypnotizedPersonMana[l_mana] = l_manaCount == 0 ? 0 : l_manaCount - 1;
+
+         CitizenSpawnerSingleton.Instance.AddToTypeRecycleBin(l_type);
+
+         HypnotizedPersonSpawnerSingleton.Instance.WaveSpawner.AddToRecycleBin(gameObject);
       }
    }
 }
