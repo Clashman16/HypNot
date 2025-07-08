@@ -25,13 +25,30 @@ namespace HypNot.Behaviours.Characters
          }
       }
 
-      [SerializeField]
       private int m_manaCount;
 
       public int ManaCount
       {
          get => m_manaCount;
-         set => m_manaCount = value;
+         set
+         {
+            m_manaCount = value;
+
+            if (m_animator == null)
+            {
+               m_animator = GetComponent<HypnotizedPersonAnimatorBehaviour>();
+            }
+
+            m_animator.ManaCount = m_manaCount;
+         }
+      }
+
+      private bool m_hasNeighbor;
+
+      public bool HasNeighbor
+      {
+         get => m_hasNeighbor;
+         set => m_hasNeighbor = value;
       }
    }
 }
