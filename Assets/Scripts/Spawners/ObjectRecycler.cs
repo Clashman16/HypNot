@@ -14,7 +14,7 @@ namespace HypNot.Spawners
          m_objectsRecycleBin = new Queue<GameObject>();
       }
 
-      internal void AddToRecycleBin(GameObject p_object)
+      public virtual void AddToRecycleBin(GameObject p_object)
       {
          if (m_objectsRecycleBin.Count >= m_maxObjectInQueue)
          {
@@ -26,7 +26,7 @@ namespace HypNot.Spawners
          m_objectsRecycleBin.Enqueue(p_object);
       }
 
-      internal GameObject RemoveFromRecycleBin()
+      public virtual GameObject RemoveFromRecycleBin()
       {
          if (m_objectsRecycleBin.Count > 0)
          {
@@ -45,7 +45,12 @@ namespace HypNot.Spawners
          get => m_objectsRecycleBin.Count == 0;
       }
 
-      public void Reset()
+      public bool IsRecycleBinFullFilled
+      {
+         get => m_objectsRecycleBin.Count == m_maxObjectInQueue;
+      }
+
+      public virtual void Reset()
       {
          m_objectsRecycleBin.Clear();
       }
