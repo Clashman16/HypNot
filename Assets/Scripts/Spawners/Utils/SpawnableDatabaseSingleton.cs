@@ -1,7 +1,7 @@
 using ScriptableObjects;
 using UnityEngine;
 
-namespace HypNot.Spawners
+namespace HypNot.Spawners.Utils
 {
    public sealed class SpawnableDatabaseSingleton
    {
