@@ -45,7 +45,7 @@ namespace HypNot.Spawners
 
             l_instantiatedCitizen.transform.position = m_spawnTransform.position;
 
-            CitizenBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenBehaviour>();
+            CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
 
             ActiveCitizenAI(l_citizen, p_citizenTarget);
          }
@@ -78,7 +78,7 @@ namespace HypNot.Spawners
 
             l_instantiatedCitizen.GetComponent<Animator>().runtimeAnimatorController = l_database.AnimatorsByName[l_citizenName];
 
-            CitizenBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenBehaviour>();
+            CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
 
             l_citizen.Type = l_type;
 
@@ -88,7 +88,7 @@ namespace HypNot.Spawners
          MapManagerSingleton.Instance.LastSpawnedCitizen = l_instantiatedCitizen;
       }
 
-      private void ActiveCitizenAI(CitizenBehaviour p_citizen, Transform p_citizenTarget)
+      private void ActiveCitizenAI(CitizenAIBehaviour p_citizen, Transform p_citizenTarget)
       {
          AIPath l_path = p_citizen.GetComponent<AIPath>();
 
@@ -103,7 +103,7 @@ namespace HypNot.Spawners
 
       public override void AddToRecycleBin(GameObject p_object)
       {
-         CharacterType l_type = p_object.GetComponent<CitizenBehaviour>().Type;
+         CharacterType l_type = p_object.GetComponent<CitizenAIBehaviour>().Type;
 
          CitizenIndicatorBehaviour l_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>();
          l_scoreIndicator.Type = l_type;
