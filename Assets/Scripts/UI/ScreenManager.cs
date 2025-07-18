@@ -1,4 +1,6 @@
 using HypNot.Player;
+using HypNot.Spawners;
+using HypNot.Utils;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -39,6 +41,12 @@ namespace HypNot.Behaviours.UI
                m_screens[3].SetActive(false);
             }
          }
+
+         GameResetter.Reset();
+
+         PlayerStateSingleton.Instance.GameState = GameState.PLAYING;
+
+         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
       }
 
       void Update()
@@ -56,7 +64,6 @@ namespace HypNot.Behaviours.UI
                   m_screens[3].SetActive(false);
                break;
                case GameState.PAUSE:
-                  m_screens[1].SetActive(false);
                   m_screens[2].SetActive(true);
                   break;
                case GameState.ENDING:
