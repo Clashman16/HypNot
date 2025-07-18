@@ -19,7 +19,7 @@ namespace HypNot.Behaviours.UI
 
       private void Update()
       {
-         if(PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+         if (PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
          {
             m_time -= Time.deltaTime;
 
@@ -37,6 +37,11 @@ namespace HypNot.Behaviours.UI
       private void UpdateDisplay()
       {
          m_timerDisplay.text = string.Format("{0:0}:{1:00}", Mathf.FloorToInt(m_time / 60f), Mathf.FloorToInt(m_time % 60f));
+      }
+
+      public void Reset()
+      {
+         m_time = PlayerSaveSingleton.Instance.TimerMax * 60f;
       }
    }
 }

@@ -50,7 +50,14 @@ namespace HypNot.Player
 
          m_firstCitizenType = (CharacterType) Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
 
-         m_gameState = GameState.PLAYING;
+         m_gameState = GameState.TITLESCREEN;
+      }
+
+      public void Reset()
+      {
+         m_canSendCitizen = true;
+
+         m_firstCitizenType = (CharacterType)Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
       }
    }
 }
