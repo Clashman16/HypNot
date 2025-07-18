@@ -46,6 +46,8 @@ namespace HypNot.Behaviours.UI
             l_congratsText.text = "Congrats!";
          }
 
+         l_congratsText.color = l_scoreColor;
+
          string l_ColorHex = ColorToHex(l_scoreColor);
 
          l_scoreDisplay.text = $"You saved <color={l_ColorHex}><size=150%>{l_score}</size></color> citizens.";
