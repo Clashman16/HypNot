@@ -11,7 +11,7 @@ namespace HypNot.Behaviours.UI
 
       void Start()
       {
-         m_lastGameState = GameState.PLAYING;
+         m_lastGameState = GameState.TITLESCREEN;
 
          m_screens = new GameObject[4];
 
@@ -67,6 +67,14 @@ namespace HypNot.Behaviours.UI
                   l_endScreen.SetActive(true);
 
                   l_endScreen.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
+
+                  break;
+
+               default:
+                  m_screens[0].SetActive(true);
+                  m_screens[1].SetActive(false);
+                  m_screens[2].SetActive(false);
+                  m_screens[3].SetActive(false);
 
                   break;
             }
