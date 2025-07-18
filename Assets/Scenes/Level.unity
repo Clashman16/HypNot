@@ -1640,27 +1640,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 781474780}
-  - component: {fileID: 781474779}
   - component: {fileID: 781474781}
   m_Layer: 0
-  m_Name: Hypnotized Person Spawner
+  m_Name: Game Screens Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &781474779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781474778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426dcf4d131aa034884de0758b61a8da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &781474780
 Transform:
   m_ObjectHideFlags: 0
@@ -2377,6 +2364,7 @@ GameObject:
   - component: {fileID: 1510541658}
   - component: {fileID: 1510541657}
   - component: {fileID: 1510541656}
+  - component: {fileID: 1510541659}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -2447,7 +2435,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510541657}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1510541659}
+        m_TargetAssemblyTypeName: HypNot.Behaviours.UI.ResetButtonBehaviour, Assembly-CSharp
+        m_MethodName: Act
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1510541657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2486,6 +2486,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1510541654}
   m_CullTransparentMesh: 1
+--- !u!114 &1510541659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510541654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1642fd6172cded946bc32bfbd8ec81c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1552881010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,6 +2789,7 @@ GameObject:
   - component: {fileID: 1567091817}
   - component: {fileID: 1567091816}
   - component: {fileID: 1567091815}
+  - component: {fileID: 1567091818}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -2847,7 +2860,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1567091816}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1567091818}
+        m_TargetAssemblyTypeName: HypNot.Behaviours.UI.QuitButtonBehaviour, Assembly-CSharp
+        m_MethodName: Act
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1567091816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,6 +2911,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567091813}
   m_CullTransparentMesh: 1
+--- !u!114 &1567091818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567091813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494c9c1cc5474b148bab91ef71bc2279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1618505540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,6 +3342,7 @@ GameObject:
   - component: {fileID: 1950551671}
   - component: {fileID: 1950551670}
   - component: {fileID: 1950551669}
+  - component: {fileID: 1950551672}
   m_Layer: 5
   m_Name: Home Button
   m_TagString: Untagged
@@ -3375,7 +3413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1950551670}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1950551672}
+        m_TargetAssemblyTypeName: HypNot.Behaviours.UI.HomeButtonBehaviour, Assembly-CSharp
+        m_MethodName: Act
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1950551670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,6 +3464,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950551667}
   m_CullTransparentMesh: 1
+--- !u!114 &1950551672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950551667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900be38a64420924fb93738cfdb32c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1957421990
 GameObject:
   m_ObjectHideFlags: 0
