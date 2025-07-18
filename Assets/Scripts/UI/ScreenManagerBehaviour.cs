@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HypNot.Behaviours.UI
 {
-   public class ScreenManager : MonoBehaviour
+   public class ScreenManagerBehaviour : MonoBehaviour
    {
       private GameObject[] m_screens;
 
