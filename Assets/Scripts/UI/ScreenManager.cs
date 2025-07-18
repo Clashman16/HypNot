@@ -50,9 +50,9 @@ namespace HypNot.Behaviours.UI
             switch(l_currentGameState)
             {
                case GameState.PLAYING:
-                  m_screens[0].SetActive(false);
+                  //m_screens[0].SetActive(false);
                   m_screens[1].SetActive(true);
-                  m_screens[2].SetActive(false);
+                  //m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
                break;
                case GameState.PAUSE:
