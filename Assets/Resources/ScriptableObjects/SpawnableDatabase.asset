@@ -15,18 +15,18 @@ MonoBehaviour:
   m_hypnotizedPerson: {fileID: 8506972107876396009, guid: b6fb6d059d1e47c44a860b40bae1fe5d, type: 3}
   m_citizen: {fileID: 1258608244791976874, guid: 86f20e9f8eeaa704391209e8c92533c5, type: 3}
   m_animators:
-  - {fileID: 9100000, guid: 262fab97213992a42a9c122c4cf6cc05, type: 2}
-  - {fileID: 9100000, guid: bbdb434595eb7ce479e0565a745089aa, type: 2}
-  - {fileID: 9100000, guid: 0864271092c0d4c4b8d69af98d3dd36c, type: 2}
-  - {fileID: 9100000, guid: 4c098d17c96677b49ae13f0c5533d577, type: 2}
-  - {fileID: 9100000, guid: 6783192481d73cf4089be5c43be2b7b7, type: 2}
-  - {fileID: 9100000, guid: 721a1c57829713340bc446b55324182c, type: 2}
-  - {fileID: 9100000, guid: b7df8b52d58d16b4ba0a90f7a20543c0, type: 2}
-  - {fileID: 9100000, guid: 3d34a2a7d1736604ba30cbe56c022c40, type: 2}
-  - {fileID: 9100000, guid: c46460fdffbf9c64d96358dee6be412c, type: 2}
-  - {fileID: 9100000, guid: 124b92e09e1301c4184f7f6058fbbd3a, type: 2}
-  - {fileID: 9100000, guid: b3771e314fc519b4394901386433c1bd, type: 2}
-  - {fileID: 9100000, guid: 455bc91d1c73cd046b96aefae54e8a75, type: 2}
-  - {fileID: 9100000, guid: 539ba64fb0cfb6043a16ddb9cf4f5060, type: 2}
-  - {fileID: 9100000, guid: d716ce7006a87ed4784d4ae6672df976, type: 2}
-  - {fileID: 9100000, guid: d3fb2a595d2e53b4991c13f34664f4c4, type: 2}
+  - {fileID: 9100000, guid: b8d5b1882fc7ccd459c0286625061f4d, type: 2}
+  - {fileID: 22100000, guid: 4e05791a562b9bd48b146953c8e906bb, type: 2}
+  - {fileID: 22100000, guid: 7561fe3cb3d1ea342a01c2af826c10b6, type: 2}
+  - {fileID: 22100000, guid: 0dac5966374d91448bf784f615b8d01f, type: 2}
+  - {fileID: 22100000, guid: 76395da81285d6f48af4e18804dee832, type: 2}
+  - {fileID: 22100000, guid: b56bd1072621b7a4fa351eab5e2923ae, type: 2}
+  - {fileID: 22100000, guid: 6d6e97ec5b93dcb488b80a3692199fa7, type: 2}
+  - {fileID: 22100000, guid: 623f76fb36f07b74da150474d8c52d8f, type: 2}
+  - {fileID: 22100000, guid: 0f64836df75d7834090b3d942557ceb5, type: 2}
+  - {fileID: 22100000, guid: 26129648a552c3f4ba3f05fdc057b234, type: 2}
+  - {fileID: 22100000, guid: 1c55c13753a97424ca04be2b3d03ebb7, type: 2}
+  - {fileID: 22100000, guid: df27684ad2101384a8eb8306bbe71a14, type: 2}
+  - {fileID: 22100000, guid: 459c54d089544464aaa4252185968836, type: 2}
+  - {fileID: 22100000, guid: 9e1c17f273c215449abee2eb67f0e635, type: 2}
+  - {fileID: 22100000, guid: b3fe3f28edada584592a9571eb3e98cc, type: 2}

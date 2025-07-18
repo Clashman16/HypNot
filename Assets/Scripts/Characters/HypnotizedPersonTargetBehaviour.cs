@@ -16,9 +16,9 @@ namespace HypNot.Behaviours.Characters
          get => m_data;
       }
 
-      private List<CitizenBehaviour> m_citizens;
+      private List<CitizenAIBehaviour> m_citizens;
 
-      public List<CitizenBehaviour> Citizens
+      public List<CitizenAIBehaviour> Citizens
       {
          get => m_citizens;
       }
@@ -27,7 +27,7 @@ namespace HypNot.Behaviours.Characters
       {
          m_data = GetComponent<HypnotizedPersonDataBehaviour>();
 
-         m_citizens = new List<CitizenBehaviour>();
+         m_citizens = new List<CitizenAIBehaviour>();
       }
 
       public void OnPointerClick(PointerEventData eventData)
@@ -53,7 +53,7 @@ namespace HypNot.Behaviours.Characters
       {
          PlayerScoreSingleton.Instance.Score += 1;
 
-         foreach (CitizenBehaviour l_citizen in m_citizens)
+         foreach (CitizenAIBehaviour l_citizen in m_citizens)
          {
             CitizenSpawnerSingleton.Instance.AddToRecycleBin(l_citizen.gameObject);
          }

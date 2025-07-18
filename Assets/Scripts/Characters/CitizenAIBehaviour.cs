@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace HypNot.Behaviours.Characters
 {
-   public class CitizenBehaviour : MonoBehaviour
+   public class CitizenAIBehaviour : MonoBehaviour
    {
       private CharacterType m_type;
 
@@ -27,6 +27,7 @@ namespace HypNot.Behaviours.Characters
 
       public AIPath AIPath
       {
+         get => m_aiPath;
          set => m_aiPath = value;
       }
 
@@ -36,6 +37,8 @@ namespace HypNot.Behaviours.Characters
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
+            GetComponent<CitizenAnimatorBehaviour>().IsDestinationReached = true;
+
             m_aiPath.canMove = false;
             m_aiPath.canSearch = false;
 
