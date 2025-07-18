@@ -1,3 +1,4 @@
+using HypNot.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -41,7 +42,7 @@ namespace HypNot.Behaviours.UI
 
       private void Update()
       {
-         if (m_isPressed)
+         if (m_isPressed && PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
          {
             ApplyDirection();
          }

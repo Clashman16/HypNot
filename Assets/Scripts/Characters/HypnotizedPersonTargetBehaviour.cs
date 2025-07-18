@@ -32,19 +32,22 @@ namespace HypNot.Behaviours.Characters
 
       public void OnPointerClick(PointerEventData eventData)
       {
-         bool l_canReachTarget = PlayerStateSingleton.Instance.CanSendCitizen;
-
-         if (l_canReachTarget)
+         if(PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
          {
-            int l_playerScore = PlayerScoreSingleton.Instance.Score;
-            int l_manaCount = m_data.ManaCount;
+            bool l_canReachTarget = PlayerStateSingleton.Instance.CanSendCitizen;
 
-            if ((l_playerScore == 1 && l_manaCount == 1)
-               || l_playerScore > 1)
+            if (l_canReachTarget)
             {
-               CitizenSpawnerSingleton.Instance.Spawn(transform);
+               int l_playerScore = PlayerScoreSingleton.Instance.Score;
+               int l_manaCount = m_data.ManaCount;
 
-               PlayerStateSingleton.Instance.CanSendCitizen = false;
+               if ((l_playerScore == 1 && l_manaCount == 1)
+                  || l_playerScore > 1)
+               {
+                  CitizenSpawnerSingleton.Instance.Spawn(transform);
+
+                  PlayerStateSingleton.Instance.CanSendCitizen = false;
+               }
             }
          }
       }

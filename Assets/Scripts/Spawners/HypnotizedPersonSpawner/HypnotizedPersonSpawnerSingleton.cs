@@ -54,15 +54,18 @@ namespace HypNot.Spawners
 
       public void Spawn()
       {
-         m_waveSpawner.SpawnWave();
-
-         // If the first wave appeared
-         if(m_waveSpawner.GetType() == typeof(FirstWaveSpawner))
+         if (PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
          {
-            Queue<GameObject> l_recycleBin = new Queue<GameObject>();
-            m_waveSpawner.CopyRecycleBin(l_recycleBin);
+            m_waveSpawner.SpawnWave();
 
-            m_waveSpawner = new RandomWaveSpawner(m_spawnRange, l_recycleBin);
+            // If the first wave appeared
+            if (m_waveSpawner.GetType() == typeof(FirstWaveSpawner))
+            {
+               Queue<GameObject> l_recycleBin = new Queue<GameObject>();
+               m_waveSpawner.CopyRecycleBin(l_recycleBin);
+
+               m_waveSpawner = new RandomWaveSpawner(m_spawnRange, l_recycleBin);
+            }
          }
       }
    }

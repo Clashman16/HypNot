@@ -16,9 +16,12 @@ namespace HypNot.Player
          {
             m_score = value;
 
-            CitizenIndicatorBehaviour l_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>();
+            if(PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+            {
+               CitizenIndicatorBehaviour l_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>();
 
-            l_scoreIndicator.CitizenCoutDisplay.text = m_score < 10 ? "0" + m_score.ToString() : m_score.ToString();
+               l_scoreIndicator.CitizenCoutDisplay.text = m_score < 10 ? "0" + m_score.ToString() : m_score.ToString();
+            }
          }
       }
 
