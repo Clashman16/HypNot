@@ -45,6 +45,8 @@ namespace HypNot.Spawners
 
             l_instantiatedCitizen.transform.position = m_spawnTransform.position;
 
+            l_instantiatedCitizen.GetComponent<CitizenAnimatorBehaviour>().IsDestinationReached = false;
+
             CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
 
             ActiveCitizenAI(l_citizen, p_citizenTarget);
@@ -76,7 +78,9 @@ namespace HypNot.Spawners
 
             l_instantiatedCitizen = Object.Instantiate(l_citizenResource, m_spawnTransform.position, Quaternion.identity);
 
-            l_instantiatedCitizen.GetComponent<Animator>().runtimeAnimatorController = l_database.AnimatorsByName[l_citizenName];
+            Animator l_animator = l_instantiatedCitizen.GetComponent<Animator>();
+            l_animator.runtimeAnimatorController = l_database.AnimatorsByName[l_citizenName];
+            l_animator.Rebind();
 
             CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
 
