@@ -23,6 +23,15 @@ namespace HypNot.Player
          get => m_firstCitizenType;
       }
 
+      private GameState m_gameState;
+
+      public GameState GameState
+      {
+         get => m_gameState;
+         set => m_gameState = value;
+      }
+
+
       public static PlayerStateSingleton Instance
       {
          get
@@ -40,6 +49,8 @@ namespace HypNot.Player
          m_canSendCitizen = true;
 
          m_firstCitizenType = (CharacterType) Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
+
+         m_gameState = GameState.PLAYING;
       }
    }
 }

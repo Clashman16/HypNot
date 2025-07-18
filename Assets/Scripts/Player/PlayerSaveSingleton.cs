@@ -22,7 +22,13 @@ namespace HypNot.Player
 
       private PlayerSaveSingleton()
       {
-         
+
+      }
+
+      public int TimerMax
+      {
+         get => PlayerPrefs.GetInt(string.Concat(m_prefPrefix, "TimerMax"), 1);
+         set => PlayerPrefs.SetInt(string.Concat(m_prefPrefix, "TimerMax"), value);
       }
 
       public int Difficulty
