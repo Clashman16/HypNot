@@ -37,6 +37,8 @@ namespace HypNot.Behaviours.Characters
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
+            GetComponent<CitizenAnimatorBehaviour>().IsDestinationReached = true;
+
             m_aiPath.canMove = false;
             m_aiPath.canSearch = false;
 
