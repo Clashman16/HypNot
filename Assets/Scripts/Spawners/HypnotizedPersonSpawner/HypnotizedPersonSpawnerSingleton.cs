@@ -69,5 +69,14 @@ namespace HypNot.Spawners
             }
          }
       }
+
+      public void Reset()
+      {
+         m_waveSpawner.Reset();
+
+         SetSpawnRange();
+
+         m_waveSpawner = new FirstWaveSpawner(m_spawnRange);
+      }
    }
 }

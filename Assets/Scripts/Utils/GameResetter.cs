@@ -12,7 +12,7 @@ namespace HypNot.Utils
       {
          CitizenSpawnerSingleton.Instance.Reset();
 
-         HypnotizedPersonSpawnerSingleton.Instance.WaveSpawner.Reset();
+         HypnotizedPersonSpawnerSingleton.Instance.Reset();
 
          MapManagerSingleton.Instance.Reset();
 
