@@ -78,7 +78,20 @@ namespace HypNot.Map
             {
                m_hypnotizedPersonMana[l_i] = 0;
             }
+         }
 
+         CitizenAIBehaviour[] l_citizens = Object.FindObjectsByType<CitizenAIBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+         foreach (CitizenAIBehaviour l_citizen in l_citizens)
+         {
+            Object.Destroy(l_citizen.gameObject);
+         }
+
+         HypnotizedPersonDataBehaviour[] l_hypnotizedPersons = Object.FindObjectsByType<HypnotizedPersonDataBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+         foreach (HypnotizedPersonDataBehaviour l_person in l_hypnotizedPersons)
+         {
+            Object.Destroy(l_person.gameObject);
          }
       }
    }
