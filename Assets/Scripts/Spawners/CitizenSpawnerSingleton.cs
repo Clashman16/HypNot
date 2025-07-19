@@ -4,7 +4,7 @@ using HypNot.Map;
 using HypNot.Player;
 using HypNot.Spawners.Utils;
 using Pathfinding;
-using ScriptableObjects;
+using HypNot.ScriptableObjects;
 using System.Collections.Generic;
 using UnityEngine;
 

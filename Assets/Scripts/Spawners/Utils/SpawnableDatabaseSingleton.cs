@@ -1,4 +1,4 @@
-using ScriptableObjects;
+using HypNot.ScriptableObjects;
 using UnityEngine;
 
 namespace HypNot.Spawners.Utils

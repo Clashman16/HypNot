@@ -1,7 +1,7 @@
 using HypNot.Behaviours.Characters;
 using HypNot.Map;
 using HypNot.Spawners.Utils;
-using ScriptableObjects;
+using HypNot.ScriptableObjects;
 using UnityEngine;
 
 namespace HypNot.Spawners
