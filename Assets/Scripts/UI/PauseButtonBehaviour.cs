@@ -12,20 +12,6 @@ namespace HypNot.Behaviours.UI
 
       private const string m_spritesheetPath = "Spritesheets/UI/pause_button";
 
-      public void Start()
-      {
-         Image[] l_images = GetComponentsInChildren<Image>();
-         foreach(Image l_img in l_images)
-         {
-            if(l_img.gameObject != gameObject)
-            {
-               m_icon = l_img;
-            }
-         }
-         
-         m_sprites = Resources.LoadAll<Sprite>(m_spritesheetPath);
-      }
-
       public override void Act()
       {
          PlayerStateSingleton.Instance.GameScreen = GameScreen.PAUSE_SCREEN;
@@ -35,6 +21,23 @@ namespace HypNot.Behaviours.UI
 
       public void ResetIcon()
       {
+         if(m_icon == null)
+         {
+            Image[] l_images = GetComponentsInChildren<Image>();
+            foreach (Image l_img in l_images)
+            {
+               if (l_img.gameObject != gameObject)
+               {
+                  m_icon = l_img;
+               }
+            }
+         }
+
+         if(m_sprites == null)
+         {
+            m_sprites = Resources.LoadAll<Sprite>(m_spritesheetPath);
+         }
+
          m_icon.sprite = m_sprites[1];
       }
    }
