@@ -49,7 +49,9 @@ namespace HypNot.Behaviours.UI
 
          if (l_currentGameScreen != m_lastGameScreen)
          {
-            switch(l_currentGameScreen)
+            AudioSource l_backgroundMusic = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponent<AudioSource>();
+
+            switch (l_currentGameScreen)
             {
                case GameScreen.GAME_SCREEN:
                   m_screens[0].SetActive(false);
@@ -62,9 +64,25 @@ namespace HypNot.Behaviours.UI
 
                   l_gameScreen.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
 
+                  if (!l_backgroundMusic.isPlaying)
+                  {
+                     if(m_lastGameScreen != GameScreen.PAUSE_SCREEN)
+                     {
+                        l_backgroundMusic.Play();
+                     }
+                     else
+                     {
+                        l_backgroundMusic.UnPause();
+                     }
+                  }
+
                   break;
+
                case GameScreen.PAUSE_SCREEN:
                   m_screens[2].SetActive(true);
+
+                  l_backgroundMusic.Pause();
+
                   break;
                case GameScreen.END_SCREEN:
                   m_screens[1].SetActive(false);
@@ -75,6 +93,8 @@ namespace HypNot.Behaviours.UI
 
                   l_endScreen.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
 
+                  l_backgroundMusic.Stop();
+
                   break;
 
                default:
@@ -82,6 +102,8 @@ namespace HypNot.Behaviours.UI
                   m_screens[1].SetActive(false);
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
+
+                  l_backgroundMusic.Stop();
 
                   break;
             }
