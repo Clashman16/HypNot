@@ -1,6 +1,4 @@
 using HypNot.Player;
-using HypNot.Spawners;
-using HypNot.Utils;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -55,10 +53,16 @@ namespace HypNot.Behaviours.UI
             {
                case GameScreen.GAME_SCREEN:
                   m_screens[0].SetActive(false);
-                  m_screens[1].SetActive(true);
-                  //m_screens[2].SetActive(false);
+                  m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
-               break;
+
+                  GameObject l_gameScreen = m_screens[1];
+
+                  l_gameScreen.SetActive(true);
+
+                  l_gameScreen.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
+
+                  break;
                case GameScreen.PAUSE_SCREEN:
                   m_screens[2].SetActive(true);
                   break;
@@ -76,7 +80,7 @@ namespace HypNot.Behaviours.UI
                default:
                   m_screens[0].SetActive(true);
                   m_screens[1].SetActive(false);
-                  //m_screens[2].SetActive(false);
+                  m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
 
                   break;
