@@ -15,7 +15,15 @@ namespace HypNot.Behaviours.UI
 
       public TextMeshProUGUI CitizenCoutDisplay
       {
-         get => m_citizenCoutDisplay;
+         get
+         {
+            if(m_citizenCoutDisplay == null)
+            {
+               m_citizenCoutDisplay = GetComponentInChildren<TextMeshProUGUI>(true);
+            }
+
+            return m_citizenCoutDisplay;
+         }
       }
 
       public CharacterType Type
@@ -31,12 +39,6 @@ namespace HypNot.Behaviours.UI
 
       void Start()
       {
-         int l_score = PlayerScoreSingleton.Instance.Score;
-
-         m_citizenCoutDisplay = GetComponentInChildren<TextMeshProUGUI>();
-
-         m_citizenCoutDisplay.text = l_score <  10 ? "0" + l_score.ToString() : l_score.ToString();
-
          m_animator = GetComponentInChildren<Animator>();
 
          Type = PlayerStateSingleton.Instance.FirstCitizenType;

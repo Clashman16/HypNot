@@ -1,3 +1,4 @@
+using HypNot.Behaviours.UI;
 using HypNot.Map;
 using HypNot.Player;
 using HypNot.Spawners;
@@ -32,7 +33,7 @@ namespace HypNot.Behaviours.Characters
 
       public void OnPointerClick(PointerEventData eventData)
       {
-         if(PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+         if(PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
          {
             bool l_canReachTarget = PlayerStateSingleton.Instance.CanSendCitizen;
 

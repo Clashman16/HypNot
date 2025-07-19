@@ -1,6 +1,4 @@
 using HypNot.Player;
-using HypNot.Spawners;
-using HypNot.Utils;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -9,11 +7,13 @@ namespace HypNot.Behaviours.UI
    {
       private GameObject[] m_screens;
 
-      private GameState m_lastGameState;
+      private GameScreen m_lastGameScreen;
 
       void Start()
       {
-         m_lastGameState = GameState.TITLESCREEN;
+         PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
+
+         m_lastGameScreen = GameScreen.TITLE_SCREEN;
 
          m_screens = new GameObject[4];
 
@@ -28,7 +28,7 @@ namespace HypNot.Behaviours.UI
             else if (l_go.name.Contains("Game"))
             {
                m_screens[1] = l_go;
-               //m_screens[1].SetActive(false);
+               m_screens[1].SetActive(false);
             }
             else if(l_go.name.Contains("Pause"))
             {
@@ -41,32 +41,32 @@ namespace HypNot.Behaviours.UI
                m_screens[3].SetActive(false);
             }
          }
-
-         GameResetter.Reset();
-
-         PlayerStateSingleton.Instance.GameState = GameState.PLAYING;
-
-         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
       }
 
       void Update()
       {
-         GameState l_currentGameState = PlayerStateSingleton.Instance.GameState;
+         GameScreen l_currentGameScreen = PlayerStateSingleton.Instance.GameScreen;
 
-         if (l_currentGameState != m_lastGameState)
+         if (l_currentGameScreen != m_lastGameScreen)
          {
-            switch(l_currentGameState)
+            switch(l_currentGameScreen)
             {
-               case GameState.PLAYING:
-                  //m_screens[0].SetActive(false);
-                  m_screens[1].SetActive(true);
-                  //m_screens[2].SetActive(false);
+               case GameScreen.GAME_SCREEN:
+                  m_screens[0].SetActive(false);
+                  m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
-               break;
-               case GameState.PAUSE:
+
+                  GameObject l_gameScreen = m_screens[1];
+
+                  l_gameScreen.SetActive(true);
+
+                  l_gameScreen.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
+
+                  break;
+               case GameScreen.PAUSE_SCREEN:
                   m_screens[2].SetActive(true);
                   break;
-               case GameState.ENDING:
+               case GameScreen.END_SCREEN:
                   m_screens[1].SetActive(false);
 
                   GameObject l_endScreen = m_screens[3];
@@ -86,7 +86,7 @@ namespace HypNot.Behaviours.UI
                   break;
             }
 
-            m_lastGameState = l_currentGameState;
+            m_lastGameScreen = l_currentGameScreen;
          }
       }
    }
