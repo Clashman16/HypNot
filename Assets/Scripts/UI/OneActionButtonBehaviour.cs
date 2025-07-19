@@ -1,4 +1,5 @@
 using HypNot.Player;
+using HypNot.Sounds;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -15,12 +16,14 @@ namespace HypNot.Behaviours.UI
 
             foreach (AudioSource l_src in l_sources)
             {
-               if (l_src.clip.name.Contains("button"))
+               if (!l_src.clip.name.Contains("music"))
                {
                   m_audioPlayer = l_src;
                }
             }
          }
+
+         m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.ButtonSound;
 
          m_audioPlayer.Play();
       }
