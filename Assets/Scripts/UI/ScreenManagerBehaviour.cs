@@ -76,7 +76,7 @@ namespace HypNot.Behaviours.UI
                default:
                   m_screens[0].SetActive(true);
                   m_screens[1].SetActive(false);
-                  m_screens[2].SetActive(false);
+                  //m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
 
                   break;
