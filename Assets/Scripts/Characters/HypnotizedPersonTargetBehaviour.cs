@@ -1,6 +1,7 @@
 using HypNot.Behaviours.UI;
 using HypNot.Map;
 using HypNot.Player;
+using HypNot.Sounds;
 using HypNot.Spawners;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,11 +25,23 @@ namespace HypNot.Behaviours.Characters
          get => m_citizens;
       }
 
+      AudioSource m_audioPlayer;
+
       private void Start()
       {
          m_data = GetComponent<HypnotizedPersonDataBehaviour>();
 
          m_citizens = new List<CitizenAIBehaviour>();
+
+         AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
+
+         foreach (AudioSource l_src in l_sources)
+         {
+            if (!l_src.clip.name.Contains("music"))
+            {
+               m_audioPlayer = l_src;
+            }
+         }
       }
 
       public void OnPointerClick(PointerEventData eventData)
@@ -79,6 +92,10 @@ namespace HypNot.Behaviours.Characters
          CitizenSpawnerSingleton.Instance.AddToTypeRecycleBin(l_type);
 
          HypnotizedPersonSpawnerSingleton.Instance.WaveSpawner.AddToRecycleBin(gameObject);
+
+         m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.OneMoreCitizenSound;
+
+         m_audioPlayer.Play();
       }
    }
 }

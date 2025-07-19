@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0b633eddca7a84d8422c92610713d8, type: 3}
+  m_Name: SFXDatabase
+  m_EditorClassIdentifier: 
+  m_endSound: {fileID: 8300000, guid: 45540bde7a35dc1428aff742361b5239, type: 3}
+  m_collisionSound: {fileID: 8300000, guid: 669e25789fbcc5b439d3b1c2d62229e8, type: 3}
+  m_oneMoreCitizenSound: {fileID: 8300000, guid: 9d0c59c9c82022347a8f694952f01f1d, type: 3}
+  m_buttonSound: {fileID: 8300000, guid: e1803fc1ff8df1342819675353a0b346, type: 3}
+  m_footstepsSounds:
+  - {fileID: 8300000, guid: 630f189ea2d2aff4e971c53bf673d32e, type: 3}
+  - {fileID: 8300000, guid: 77b726af4dca2bb4c9cad5c6b654d617, type: 3}
+  - {fileID: 8300000, guid: af851f1da2a41b34f92cddcb085e2241, type: 3}
+  - {fileID: 8300000, guid: 454701ca12de25045be7d7cc63171343, type: 3}
+  - {fileID: 8300000, guid: 16ad28c81a0a1a748b5a0c02774beb3d, type: 3}
+  - {fileID: 8300000, guid: 2faf9eadab7fd2a4e8a52905f498bae3, type: 3}
+  - {fileID: 8300000, guid: 15afb17787e6e304893d347a95552ca6, type: 3}
+  - {fileID: 8300000, guid: c7736e192824f0b4a8a845ae3893a9b4, type: 3}

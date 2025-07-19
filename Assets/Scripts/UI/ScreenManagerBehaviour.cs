@@ -1,4 +1,5 @@
 using HypNot.Player;
+using HypNot.Sounds;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -49,7 +50,25 @@ namespace HypNot.Behaviours.UI
 
          if (l_currentGameScreen != m_lastGameScreen)
          {
-            switch(l_currentGameScreen)
+            AudioSource l_backgroundMusic = null;
+
+            AudioSource l_endSFX = null;
+
+            AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
+
+            foreach (AudioSource l_src in l_sources)
+            {
+               if (l_src.clip.name.Contains("music"))
+               {
+                  l_backgroundMusic = l_src;
+               }
+               else
+               {
+                  l_endSFX = l_src;
+               }
+            }
+
+            switch (l_currentGameScreen)
             {
                case GameScreen.GAME_SCREEN:
                   m_screens[0].SetActive(false);
@@ -62,9 +81,25 @@ namespace HypNot.Behaviours.UI
 
                   l_gameScreen.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
 
+                  if (!l_backgroundMusic.isPlaying)
+                  {
+                     if(m_lastGameScreen != GameScreen.PAUSE_SCREEN)
+                     {
+                        l_backgroundMusic.Play();
+                     }
+                     else
+                     {
+                        l_backgroundMusic.UnPause();
+                     }
+                  }
+
                   break;
+
                case GameScreen.PAUSE_SCREEN:
                   m_screens[2].SetActive(true);
+
+                  l_backgroundMusic.Pause();
+
                   break;
                case GameScreen.END_SCREEN:
                   m_screens[1].SetActive(false);
@@ -75,6 +110,12 @@ namespace HypNot.Behaviours.UI
 
                   l_endScreen.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
 
+                  l_backgroundMusic.Stop();
+
+                  l_endSFX.clip = SFXDatabaseSingleton.Instance.Database.EndSound;
+
+                  l_endSFX.Play();
+
                   break;
 
                default:
@@ -82,6 +123,8 @@ namespace HypNot.Behaviours.UI
                   m_screens[1].SetActive(false);
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
+
+                  l_backgroundMusic.Stop();
 
                   break;
             }

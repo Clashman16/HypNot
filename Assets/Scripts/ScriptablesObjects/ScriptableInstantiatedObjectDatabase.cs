@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ScriptableObjects
+namespace HypNot.ScriptableObjects
 {
    [CreateAssetMenu(menuName = "ScriptableObjects/InstantiatedObjectDatabase")]
    public class ScriptableInstantiatedObjectDatabase : ScriptableObject

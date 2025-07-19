@@ -1,4 +1,5 @@
 using HypNot.Player;
+using HypNot.Sounds;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +14,8 @@ namespace HypNot.Behaviours.UI
       private bool m_isPressed;
 
       private float m_moveSpeed = 4;
+
+      private AudioSource m_audioPlayer;
 
       private void Start()
       {
@@ -36,6 +39,16 @@ namespace HypNot.Behaviours.UI
          }
 
          m_target = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag);
+
+         AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
+
+         foreach(AudioSource l_src in l_sources)
+         {
+            if(!l_src.clip.name.Contains("music"))
+            {
+               m_audioPlayer = l_src;
+            }
+         }
       }
 
       private void Update()
@@ -54,6 +67,10 @@ namespace HypNot.Behaviours.UI
       public void OnPointerDown(PointerEventData eventData)
       {
          m_isPressed = true;
+
+         m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.ButtonSound;
+
+         m_audioPlayer.Play();
       }
 
       public void OnPointerUp(PointerEventData eventData)
