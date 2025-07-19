@@ -20,6 +20,11 @@ namespace HypNot.Player
 
             if(PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
             {
+               if(m_scoreIndicator == null)
+               {
+                  m_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>(true);
+               }
+
                m_scoreIndicator.CitizenCoutDisplay.text = m_score < 10 ? "0" + m_score.ToString() : m_score.ToString();
             }
          }
@@ -40,8 +45,6 @@ namespace HypNot.Player
       private PlayerScoreSingleton()
       {
          m_score = 1;
-
-         m_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>(true);
       }
    }
 }
