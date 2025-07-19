@@ -1,6 +1,7 @@
 using HypNot.Behaviours.UI;
 using HypNot.Map;
 using HypNot.Player;
+using HypNot.Sounds;
 using HypNot.Spawners;
 using Pathfinding;
 using UnityEngine;
@@ -55,6 +56,12 @@ namespace HypNot.Behaviours.Characters
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
+            AudioSource l_audioPlayer = GetComponent<AudioSource>();
+
+            l_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.CollisionSound;
+
+            l_audioPlayer.Play();
+
             m_animator.IsDestinationReached = true;
 
             m_aiPath.canMove = false;
