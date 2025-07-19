@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0b633eddca7a84d8422c92610713d8, type: 3}
   m_Name: SFXDatabase
   m_EditorClassIdentifier: 
-  m_buttonClickSound: {fileID: 0}
+  m_buttonClickSound: {fileID: 8300000, guid: e1803fc1ff8df1342819675353a0b346, type: 3}
   m_victorySound: {fileID: 0}
   m_defeatSound: {fileID: 0}
   m_footstepsSounds:

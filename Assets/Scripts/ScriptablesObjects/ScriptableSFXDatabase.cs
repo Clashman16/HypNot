@@ -7,9 +7,6 @@ namespace HypNot.ScriptableObjects
    public class ScriptableSFXDatabase : ScriptableObject
    {
       [SerializeField]
-      private AudioClip m_buttonClickSound;
-
-      [SerializeField]
       private AudioClip m_victorySound;
 
       [SerializeField]

@@ -14,6 +14,8 @@ namespace HypNot.Behaviours.UI
 
       private float m_moveSpeed = 4;
 
+      private AudioSource m_audioPlayer;
+
       private void Start()
       {
          float l_rotation = transform.rotation.eulerAngles.z;
@@ -36,6 +38,16 @@ namespace HypNot.Behaviours.UI
          }
 
          m_target = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag);
+
+         AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
+
+         foreach(AudioSource l_src in l_sources)
+         {
+            if(l_src.clip.name.Contains("button"))
+            {
+               m_audioPlayer = l_src;
+            }
+         }
       }
 
       private void Update()
@@ -54,6 +66,8 @@ namespace HypNot.Behaviours.UI
       public void OnPointerDown(PointerEventData eventData)
       {
          m_isPressed = true;
+
+         m_audioPlayer.Play();
       }
 
       public void OnPointerUp(PointerEventData eventData)

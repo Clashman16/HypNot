@@ -7,6 +7,8 @@ namespace HypNot.Behaviours.UI
    {
       public override void Act()
       {
+         base.Act();
+
          PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
 
          GameResetter.Reset();

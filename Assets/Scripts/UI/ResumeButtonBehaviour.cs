@@ -6,6 +6,8 @@ namespace HypNot.Behaviours.UI
    {
       public override void Act()
       {
+         base.Act();
+
          PlayerStateSingleton.Instance.GameScreen = GameScreen.GAME_SCREEN;
       }
    }

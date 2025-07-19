@@ -14,6 +14,8 @@ namespace HypNot.Behaviours.UI
 
       public override void Act()
       {
+         base.Act();
+
          PlayerStateSingleton.Instance.GameScreen = GameScreen.PAUSE_SCREEN;
 
          m_icon.sprite = m_sprites[0];
