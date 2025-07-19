@@ -1,3 +1,4 @@
+using HypNot.Behaviours.UI;
 using HypNot.Map;
 using HypNot.Player;
 using HypNot.Spawners;
@@ -40,7 +41,7 @@ namespace HypNot.Behaviours.Characters
 
       private void Update()
       {
-         if(PlayerStateSingleton.Instance.GameState != GameState.PLAYING)
+         if(PlayerStateSingleton.Instance.GameScreen != GameScreen.GAME_SCREEN)
          {
             m_aiPath.canMove = false;
             m_aiPath.canSearch = false;

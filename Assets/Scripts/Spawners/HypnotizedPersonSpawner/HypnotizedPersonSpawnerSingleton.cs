@@ -1,3 +1,4 @@
+using HypNot.Behaviours.UI;
 using HypNot.Player;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace HypNot.Spawners
 
       public void Spawn()
       {
-         if (PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+         if (PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
          {
             m_waveSpawner.SpawnWave();
 

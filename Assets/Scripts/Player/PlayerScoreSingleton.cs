@@ -18,7 +18,7 @@ namespace HypNot.Player
          {
             m_score = value;
 
-            if(PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+            if(PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
             {
                m_scoreIndicator.CitizenCoutDisplay.text = m_score < 10 ? "0" + m_score.ToString() : m_score.ToString();
             }

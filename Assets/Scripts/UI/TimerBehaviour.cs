@@ -19,7 +19,7 @@ namespace HypNot.Behaviours.UI
 
       private void Update()
       {
-         if (PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+         if (PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
          {
             m_time -= Time.deltaTime;
 
@@ -27,7 +27,7 @@ namespace HypNot.Behaviours.UI
             {
                m_time = 0;
 
-               PlayerStateSingleton.Instance.GameState = GameState.ENDING;
+               PlayerStateSingleton.Instance.GameScreen = GameScreen.END_SCREEN;
             }
          }
 

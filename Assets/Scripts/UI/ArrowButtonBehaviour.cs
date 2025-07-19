@@ -42,7 +42,7 @@ namespace HypNot.Behaviours.UI
 
       private void Update()
       {
-         if (m_isPressed && PlayerStateSingleton.Instance.GameState == GameState.PLAYING)
+         if (m_isPressed && PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
          {
             ApplyDirection();
          }

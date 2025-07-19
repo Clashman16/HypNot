@@ -1,4 +1,5 @@
 using HypNot.Behaviours.Characters;
+using HypNot.Behaviours.UI;
 using HypNot.Map;
 using UnityEngine;
 
@@ -23,12 +24,12 @@ namespace HypNot.Player
          get => m_firstCitizenType;
       }
 
-      private GameState m_gameState;
+      private GameScreen m_gameScreen;
 
-      public GameState GameState
+      public GameScreen GameScreen
       {
-         get => m_gameState;
-         set => m_gameState = value;
+         get => m_gameScreen;
+         set => m_gameScreen = value;
       }
 
 
@@ -50,7 +51,7 @@ namespace HypNot.Player
 
          m_firstCitizenType = (CharacterType) Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
 
-         m_gameState = GameState.TITLESCREEN;
+         m_gameScreen = GameScreen.TITLE_SCREEN;
       }
 
       public void Reset()
