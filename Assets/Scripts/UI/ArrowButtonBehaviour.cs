@@ -12,8 +12,6 @@ namespace HypNot.Behaviours.UI
 
       private bool m_isPressed;
 
-      private const string m_playerTag = "Player";
-
       private float m_moveSpeed = 4;
 
       private void Start()
@@ -37,7 +35,7 @@ namespace HypNot.Behaviours.UI
             m_direction = Vector2.left;
          }
 
-         m_target = GameObject.FindGameObjectWithTag(m_playerTag);
+         m_target = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag);
       }
 
       private void Update()

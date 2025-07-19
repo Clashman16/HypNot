@@ -9,6 +9,13 @@ namespace HypNot.Player
    {
       private static PlayerStateSingleton m_instance = null;
 
+      private const string m_playerTag = "Player";
+
+      public string PlayerTag
+      {
+         get => m_playerTag;
+      }
+
       private bool m_canSendCitizen;
 
       public bool CanSendCitizen
@@ -49,7 +56,7 @@ namespace HypNot.Player
       {
          m_canSendCitizen = true;
 
-         m_firstCitizenType = (CharacterType) Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
+         m_firstCitizenType = (CharacterType)Random.Range(0, MapManagerSingleton.Instance.CharacterTypeEnumSize);
       }
 
       public void Reset()

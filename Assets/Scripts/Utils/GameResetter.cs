@@ -21,6 +21,8 @@ namespace HypNot.Utils
          PlayerStateSingleton.Instance.Reset();
 
          Object.FindObjectOfType<TimerBehaviour>(true).Reset();
+
+         GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponent<PlayerCameraBehaviour>().Reset();
       }
    }
 }
