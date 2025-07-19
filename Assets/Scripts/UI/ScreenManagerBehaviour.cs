@@ -10,17 +10,19 @@ namespace HypNot.Behaviours.UI
 
       private GameScreen m_lastGameScreen;
 
+      CreditsBehaviour m_scrollableCredits;
+
       void Start()
       {
          PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
 
          m_lastGameScreen = GameScreen.TITLE_SCREEN;
 
-         m_screens = new GameObject[4];
-
          GameObject[]  l_screensTemp = GameObject.FindGameObjectsWithTag("Screen");
 
-         foreach(GameObject l_go in l_screensTemp)
+         m_screens = new GameObject[l_screensTemp.Length];
+
+         foreach (GameObject l_go in l_screensTemp)
          {
             if(l_go.name.Contains("Title"))
             {
@@ -36,10 +38,15 @@ namespace HypNot.Behaviours.UI
                m_screens[2] = l_go;
                m_screens[2].SetActive(false);
             }
-            else
+            else if (l_go.name.Contains("End"))
             {
                m_screens[3] = l_go;
                m_screens[3].SetActive(false);
+            }
+            else
+            {
+               m_screens[4] = l_go;
+               m_screens[4].SetActive(false);
             }
          }
       }
@@ -101,6 +108,7 @@ namespace HypNot.Behaviours.UI
                   l_backgroundMusic.Pause();
 
                   break;
+
                case GameScreen.END_SCREEN:
                   m_screens[1].SetActive(false);
 
@@ -118,11 +126,28 @@ namespace HypNot.Behaviours.UI
 
                   break;
 
+               case GameScreen.CREDITS_SCREEN:
+                  m_screens[0].SetActive(false);
+
+                  GameObject l_creditScreen = m_screens[4];
+
+                  l_creditScreen.SetActive(true);
+
+                  if(m_scrollableCredits == null)
+                  {
+                     m_scrollableCredits = l_creditScreen.GetComponentInChildren<CreditsBehaviour>();
+                  }
+
+                  m_scrollableCredits.Reset();
+
+                  break;
+
                default:
                   m_screens[0].SetActive(true);
                   m_screens[1].SetActive(false);
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
+                  m_screens[4].SetActive(false);
 
                   l_backgroundMusic.Stop();
 
