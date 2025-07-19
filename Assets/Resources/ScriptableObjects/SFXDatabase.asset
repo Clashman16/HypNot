@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0b633eddca7a84d8422c92610713d8, type: 3}
   m_Name: SFXDatabase
   m_EditorClassIdentifier: 
-  m_buttonClickSound: {fileID: 8300000, guid: e1803fc1ff8df1342819675353a0b346, type: 3}
-  m_victorySound: {fileID: 0}
-  m_defeatSound: {fileID: 0}
+  m_endSound: {fileID: 8300000, guid: 45540bde7a35dc1428aff742361b5239, type: 3}
+  m_collisionSound: {fileID: 8300000, guid: 669e25789fbcc5b439d3b1c2d62229e8, type: 3}
+  m_oneMoreCitizenSound: {fileID: 8300000, guid: 9d0c59c9c82022347a8f694952f01f1d, type: 3}
+  m_buttonSound: {fileID: 8300000, guid: e1803fc1ff8df1342819675353a0b346, type: 3}
   m_footstepsSounds:
   - {fileID: 8300000, guid: 630f189ea2d2aff4e971c53bf673d32e, type: 3}
   - {fileID: 8300000, guid: 77b726af4dca2bb4c9cad5c6b654d617, type: 3}
