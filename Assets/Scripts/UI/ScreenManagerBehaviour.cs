@@ -15,6 +15,8 @@ namespace HypNot.Behaviours.UI
       {
          PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
 
+         m_lastGameScreen = GameScreen.TITLE_SCREEN;
+
          m_screens = new GameObject[4];
 
          GameObject[]  l_screensTemp = GameObject.FindGameObjectsWithTag("Screen");
@@ -28,7 +30,7 @@ namespace HypNot.Behaviours.UI
             else if (l_go.name.Contains("Game"))
             {
                m_screens[1] = l_go;
-               //m_screens[1].SetActive(false);
+               m_screens[1].SetActive(false);
             }
             else if(l_go.name.Contains("Pause"))
             {
@@ -41,12 +43,6 @@ namespace HypNot.Behaviours.UI
                m_screens[3].SetActive(false);
             }
          }
-
-         GameResetter.Reset();
-
-         PlayerStateSingleton.Instance.GameScreen = GameScreen.GAME_SCREEN;
-
-         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
       }
 
       void Update()
@@ -58,7 +54,7 @@ namespace HypNot.Behaviours.UI
             switch(l_currentGameScreen)
             {
                case GameScreen.GAME_SCREEN:
-                  //m_screens[0].SetActive(false);
+                  m_screens[0].SetActive(false);
                   m_screens[1].SetActive(true);
                   //m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
