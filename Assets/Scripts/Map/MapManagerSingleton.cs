@@ -67,5 +67,19 @@ namespace HypNot.Map
             }
          }
       }
+
+      public void Reset()
+      {
+         for (int l_i = 0; l_i < m_characterTypeEnumSize; l_i++)
+         {
+            m_hypnotizedPersonTypes[(CharacterType)l_i] = 0;
+
+            if (l_i <= m_hypnotizedPersonManaMax)
+            {
+               m_hypnotizedPersonMana[l_i] = 0;
+            }
+
+         }
+      }
    }
 }

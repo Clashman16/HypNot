@@ -31,13 +31,30 @@ namespace HypNot.Behaviours.Characters
          set => m_aiPath = value;
       }
 
+      CitizenAnimatorBehaviour m_animator;
+
+      private void Start()
+      {
+         m_animator = GetComponent<CitizenAnimatorBehaviour>();
+      }
+
+      private void Update()
+      {
+         if(PlayerStateSingleton.Instance.GameState != GameState.PLAYING)
+         {
+            m_aiPath.canMove = false;
+            m_aiPath.canSearch = false;
+            m_animator.IsDestinationReached = true;
+         }
+      }
+
       private void OnTriggerEnter2D(Collider2D p_collider)
       {
          HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
-            GetComponent<CitizenAnimatorBehaviour>().IsDestinationReached = true;
+            m_animator.IsDestinationReached = true;
 
             m_aiPath.canMove = false;
             m_aiPath.canSearch = false;
