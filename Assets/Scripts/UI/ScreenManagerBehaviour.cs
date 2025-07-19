@@ -1,4 +1,5 @@
 using HypNot.Player;
+using HypNot.Sounds;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -49,7 +50,23 @@ namespace HypNot.Behaviours.UI
 
          if (l_currentGameScreen != m_lastGameScreen)
          {
-            AudioSource l_backgroundMusic = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponent<AudioSource>();
+            AudioSource l_backgroundMusic = null;
+
+            AudioSource l_endSFX = null;
+
+            AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
+
+            foreach (AudioSource l_src in l_sources)
+            {
+               if (l_src.clip.name.Contains("music"))
+               {
+                  l_backgroundMusic = l_src;
+               }
+               else
+               {
+                  l_endSFX = l_src;
+               }
+            }
 
             switch (l_currentGameScreen)
             {
@@ -94,6 +111,10 @@ namespace HypNot.Behaviours.UI
                   l_endScreen.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
 
                   l_backgroundMusic.Stop();
+
+                  l_endSFX.clip = SFXDatabaseSingleton.Instance.Database.EndSound;
+
+                  l_endSFX.Play();
 
                   break;
 
