@@ -9,15 +9,9 @@ namespace HypNot.Behaviours.UI
 
       private GameScreen m_lastGameScreen;
 
-      CreditsBehaviour m_scrollableCredits;
-
-      Translator m_translator;
-
       void Start()
       {
          PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
-
-         m_translator = new Translator();
 
          m_lastGameScreen = GameScreen.TITLE_SCREEN;
 
@@ -80,7 +74,7 @@ namespace HypNot.Behaviours.UI
 
                   l_currentScreenObject.SetActive(true);
 
-                  l_currentScreenObject.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
+                  l_currentScreenObject.GetComponent<GameCanvasBehaviour>().LastGameScreen = m_lastGameScreen;
 
                   break;
 
@@ -98,7 +92,6 @@ namespace HypNot.Behaviours.UI
 
                   l_currentScreenObject.SetActive(true);
 
-                  l_currentScreenObject.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
                   break;
 
                case GameScreen.CREDITS_SCREEN:
@@ -108,13 +101,6 @@ namespace HypNot.Behaviours.UI
 
                   l_currentScreenObject.SetActive(true);
 
-                  if(m_scrollableCredits == null)
-                  {
-                     m_scrollableCredits = l_currentScreenObject.GetComponentInChildren<CreditsBehaviour>();
-                  }
-
-                  m_scrollableCredits.Reset();
-
                   break;
 
                case GameScreen.SETTINGS_SCREEN:
@@ -123,13 +109,6 @@ namespace HypNot.Behaviours.UI
                   l_currentScreenObject = m_screens[5];
 
                   l_currentScreenObject.SetActive(true);
-
-                  SettingsSliderBehaviour[] l_sliders = l_currentScreenObject.GetComponentsInChildren<SettingsSliderBehaviour>();
-
-                  foreach(SettingsSliderBehaviour l_slider in  l_sliders)
-                  {
-                     l_slider.Reset();
-                  }
 
                   break;
 
@@ -146,14 +125,16 @@ namespace HypNot.Behaviours.UI
                   break;
             }
 
-            m_lastGameScreen = l_currentGameScreen;
+            l_currentScreenObject.GetComponent<CanvasBehaviour>().Reset();
 
-            m_translator.TranslateScreen(l_currentScreenObject);
+            m_lastGameScreen = l_currentGameScreen;
          }
 
-         if(!m_translator.HasTranslated)
+         CanvasBehaviour l_canvas = m_screens[(int)l_currentGameScreen].GetComponent<CanvasBehaviour>();
+
+         if (l_canvas != null && !l_canvas.HasTranslated)
          {
-            m_translator.TranslateScreen(m_screens[(int) l_currentGameScreen]);
+            l_canvas.TranslateCanvas();
          }
       }
    }
