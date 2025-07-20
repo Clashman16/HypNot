@@ -36,5 +36,11 @@ namespace HypNot.Player
          get => PlayerPrefs.GetInt(string.Concat(m_prefPrefix, "Difficulty"), 1);
          set => PlayerPrefs.SetInt(string.Concat(m_prefPrefix, "Difficulty"), value);
       }
+
+      public string LanguageId
+      {
+         get => PlayerPrefs.GetString(string.Concat(m_prefPrefix, "LanguageId"), "english");
+         set => PlayerPrefs.SetString(string.Concat(m_prefPrefix, "LanguageId"), value);
+      }
    }
 }
