@@ -43,10 +43,15 @@ namespace HypNot.Behaviours.UI
                m_screens[3] = l_go;
                m_screens[3].SetActive(false);
             }
-            else
+            else if (l_go.name.Contains("Credits"))
             {
                m_screens[4] = l_go;
                m_screens[4].SetActive(false);
+            }
+            else
+            {
+               m_screens[5] = l_go;
+               m_screens[5].SetActive(false);
             }
          }
       }
@@ -142,12 +147,29 @@ namespace HypNot.Behaviours.UI
 
                   break;
 
+               case GameScreen.SETTINGS_SCREEN:
+                  m_screens[0].SetActive(false);
+
+                  GameObject l_settingsScreen = m_screens[5];
+
+                  l_settingsScreen.SetActive(true);
+
+                  SettingsSliderBehaviour[] l_sliders = l_settingsScreen.GetComponentsInChildren<SettingsSliderBehaviour>();
+
+                  foreach(SettingsSliderBehaviour l_slider in  l_sliders)
+                  {
+                     l_slider.Reset();
+                  }
+
+                  break;
+
                default:
                   m_screens[0].SetActive(true);
                   m_screens[1].SetActive(false);
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
                   m_screens[4].SetActive(false);
+                  m_screens[5].SetActive(false);
 
                   l_backgroundMusic.Stop();
 
