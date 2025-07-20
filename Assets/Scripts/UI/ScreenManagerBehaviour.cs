@@ -12,9 +12,13 @@ namespace HypNot.Behaviours.UI
 
       CreditsBehaviour m_scrollableCredits;
 
+      Translator m_translator;
+
       void Start()
       {
          PlayerStateSingleton.Instance.GameScreen = GameScreen.TITLE_SCREEN;
+
+         m_translator = new Translator();
 
          m_lastGameScreen = GameScreen.TITLE_SCREEN;
 
@@ -27,6 +31,8 @@ namespace HypNot.Behaviours.UI
             if(l_go.name.Contains("Title"))
             {
                m_screens[0] = l_go;
+
+               m_translator.TranslateScreen(l_go);
             }
             else if (l_go.name.Contains("Game"))
             {
@@ -80,6 +86,8 @@ namespace HypNot.Behaviours.UI
                }
             }
 
+            GameObject l_currentScreenObject;
+
             switch (l_currentGameScreen)
             {
                case GameScreen.GAME_SCREEN:
@@ -87,11 +95,11 @@ namespace HypNot.Behaviours.UI
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
 
-                  GameObject l_gameScreen = m_screens[1];
+                  l_currentScreenObject = m_screens[1];
 
-                  l_gameScreen.SetActive(true);
+                  l_currentScreenObject.SetActive(true);
 
-                  l_gameScreen.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
+                  l_currentScreenObject.GetComponentInChildren<PauseButtonBehaviour>().ResetIcon();
 
                   if (!l_backgroundMusic.isPlaying)
                   {
@@ -108,7 +116,9 @@ namespace HypNot.Behaviours.UI
                   break;
 
                case GameScreen.PAUSE_SCREEN:
-                  m_screens[2].SetActive(true);
+                  l_currentScreenObject = m_screens[2];
+
+                  l_currentScreenObject.SetActive(true);
 
                   l_backgroundMusic.Pause();
 
@@ -117,11 +127,11 @@ namespace HypNot.Behaviours.UI
                case GameScreen.END_SCREEN:
                   m_screens[1].SetActive(false);
 
-                  GameObject l_endScreen = m_screens[3];
+                  l_currentScreenObject = m_screens[3];
 
-                  l_endScreen.SetActive(true);
+                  l_currentScreenObject.SetActive(true);
 
-                  l_endScreen.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
+                  l_currentScreenObject.GetComponentInChildren<FinalScoreDisplayBehaviour>().UpdateDisplay();
 
                   l_backgroundMusic.Stop();
 
@@ -134,13 +144,13 @@ namespace HypNot.Behaviours.UI
                case GameScreen.CREDITS_SCREEN:
                   m_screens[0].SetActive(false);
 
-                  GameObject l_creditScreen = m_screens[4];
+                  l_currentScreenObject = m_screens[4];
 
-                  l_creditScreen.SetActive(true);
+                  l_currentScreenObject.SetActive(true);
 
                   if(m_scrollableCredits == null)
                   {
-                     m_scrollableCredits = l_creditScreen.GetComponentInChildren<CreditsBehaviour>();
+                     m_scrollableCredits = l_currentScreenObject.GetComponentInChildren<CreditsBehaviour>();
                   }
 
                   m_scrollableCredits.Reset();
@@ -150,11 +160,11 @@ namespace HypNot.Behaviours.UI
                case GameScreen.SETTINGS_SCREEN:
                   m_screens[0].SetActive(false);
 
-                  GameObject l_settingsScreen = m_screens[5];
+                  l_currentScreenObject = m_screens[5];
 
-                  l_settingsScreen.SetActive(true);
+                  l_currentScreenObject.SetActive(true);
 
-                  SettingsSliderBehaviour[] l_sliders = l_settingsScreen.GetComponentsInChildren<SettingsSliderBehaviour>();
+                  SettingsSliderBehaviour[] l_sliders = l_currentScreenObject.GetComponentsInChildren<SettingsSliderBehaviour>();
 
                   foreach(SettingsSliderBehaviour l_slider in  l_sliders)
                   {
@@ -164,7 +174,9 @@ namespace HypNot.Behaviours.UI
                   break;
 
                default:
-                  m_screens[0].SetActive(true);
+                  l_currentScreenObject = m_screens[0];
+
+                  l_currentScreenObject.SetActive(true);
                   m_screens[1].SetActive(false);
                   m_screens[2].SetActive(false);
                   m_screens[3].SetActive(false);
@@ -177,6 +189,13 @@ namespace HypNot.Behaviours.UI
             }
 
             m_lastGameScreen = l_currentGameScreen;
+
+            m_translator.TranslateScreen(l_currentScreenObject);
+         }
+
+         if(!m_translator.HasTranslated)
+         {
+            m_translator.TranslateScreen(m_screens[(int) l_currentGameScreen]);
          }
       }
    }
