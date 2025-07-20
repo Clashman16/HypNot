@@ -3,6 +3,7 @@ using HypNot.Map;
 using HypNot.Player;
 using HypNot.Sounds;
 using HypNot.Spawners;
+using HypNot.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,15 +34,7 @@ namespace HypNot.Behaviours.Characters
 
          m_citizens = new List<CitizenAIBehaviour>();
 
-         AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
-
-         foreach (AudioSource l_src in l_sources)
-         {
-            if (!l_src.clip.name.Contains("music"))
-            {
-               m_audioPlayer = l_src;
-            }
-         }
+         m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
       }
 
       public void OnPointerClick(PointerEventData eventData)

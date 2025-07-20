@@ -9,13 +9,6 @@ namespace HypNot.Player
    {
       private static PlayerStateSingleton m_instance = null;
 
-      private const string m_playerTag = "Player";
-
-      public string PlayerTag
-      {
-         get => m_playerTag;
-      }
-
       private bool m_canSendCitizen;
 
       public bool CanSendCitizen

@@ -1,4 +1,5 @@
 using HypNot.Map;
+using HypNot.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,6 @@ namespace HypNot.Spawners
 {
    public class FirstWaveSpawner : HypnotizedPersonWaveSpawner
    {
-      private const string m_firstLevelZoneTag = "FirstLevelZone";
-
       private Dictionary<LevelZoneBehaviour, int> m_levelZones;
 
       public FirstWaveSpawner(double p_spawnRange) : base(p_spawnRange)
@@ -26,7 +25,7 @@ namespace HypNot.Spawners
             m_levelZones.Clear();
          }
 
-         GameObject l_firstLevelZone = GameObject.FindGameObjectWithTag(m_firstLevelZoneTag);
+         GameObject l_firstLevelZone = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.FirstLevelZoneTag);
 
          m_levelZones.Add(l_firstLevelZone.GetComponent<LevelZoneBehaviour>(), l_firstLevelZone.transform.childCount);
 

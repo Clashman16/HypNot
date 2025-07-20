@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - FirstLevelZone
-  - Screen
+  - BackgroundMusicPlayer
+  - SFXPlayer
   layers:
   - Default
   - TransparentFX
