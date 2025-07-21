@@ -5,13 +5,13 @@ namespace HypNot.Behaviours.UI
 {
    public class CreditsBehaviour : MonoBehaviour
    {
-      private Animator m_textanimator;
+      private Animator m_textAnimator;
 
       private Animator m_companyLogoAnimator;
 
       public void Reset()
       {
-         if(m_textanimator == null)
+         if(m_textAnimator == null)
          {
             Animator[] l_animators = transform.parent.GetComponentsInChildren<Animator>();
 
@@ -19,7 +19,7 @@ namespace HypNot.Behaviours.UI
             {
                if(l_animator.GetComponent<TextMeshProUGUI>())
                {
-                  m_textanimator = l_animator;
+                  m_textAnimator = l_animator;
                }
                else
                {
@@ -28,7 +28,7 @@ namespace HypNot.Behaviours.UI
             }
          }
 
-         m_textanimator.SetTrigger("Scroll");
+         m_textAnimator.SetTrigger("Scroll");
 
          m_companyLogoAnimator.SetTrigger("Reset");
       }
