@@ -1,3 +1,4 @@
+using HypNot.Player;
 using HypNot.Utils;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace HypNot.Sounds
       private void Start()
       {
          m_audioPlayer = GetComponent<AudioSource>();
+
+         m_audioPlayer.volume = PlayerSaveSingleton.Instance.SFXVolume;
 
          m_footstepsSounds = SFXDatabaseSingleton.Instance.Database.FootstepsSounds;
 

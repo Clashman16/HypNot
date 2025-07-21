@@ -1,4 +1,5 @@
 using HypNot.Player;
+using HypNot.Translations;
 using TMPro;
 using UnityEngine;
 
@@ -10,47 +11,53 @@ namespace HypNot.Behaviours.UI
 
       private TextMeshProUGUI l_congratsText;
 
-      private void Start()
+      public void UpdateDisplay()
       {
          TextMeshProUGUI[] l_textsTemp = GetComponentsInChildren<TextMeshProUGUI>();
 
-         foreach(TextMeshProUGUI l_text in l_textsTemp)
+         if(l_congratsText == null)
          {
-            if(l_text.name.Contains("Score"))
+            foreach (TextMeshProUGUI l_text in l_textsTemp)
             {
-               l_scoreDisplay = l_text;
-            }
-            else
-            {
-               l_congratsText = l_text;
+               if (l_text.name.Contains("Score"))
+               {
+                  l_scoreDisplay = l_text;
+               }
+               else
+               {
+                  l_congratsText = l_text;
+               }
             }
          }
-      }
 
-      public void UpdateDisplay()
-      {
          int l_score = PlayerScoreSingleton.Instance.Score;
 
          Color l_scoreColor;
+
+         LanguageDatabaseSingleton l_database = LanguageDatabaseSingleton.Instance;
+
+         PlayerSaveSingleton l_save = PlayerSaveSingleton.Instance;
 
          if (l_score <= 5)
          {
             l_scoreColor = Color.red;
 
-            l_congratsText.text = "Too bad!";
+            l_congratsText.text = l_save.LanguageId == l_database.EnglishId ? "Too bad!" : "Dommage !";
          }
          else
          {
             l_scoreColor = Color.green;
 
-            l_congratsText.text = "Congrats!";
+            l_congratsText.text = l_save.LanguageId == l_database.EnglishId ? "Congrats!" : "Bravo !";
          }
 
          l_congratsText.color = l_scoreColor;
 
          string l_ColorHex = ColorToHex(l_scoreColor);
 
-         l_scoreDisplay.text = $"You saved <color={l_ColorHex}><size=150%>{l_score}</size></color> citizens.";
+         l_scoreDisplay.text = l_save.LanguageId == l_database.EnglishId ?
+            $"You saved <color={l_ColorHex}><size=150%>{l_score}</size></color> citizens."
+            : $"Vous avez sauvé <color={l_ColorHex}><size=150%>{l_score}</size></color> citoyens.";
       }
 
       private string ColorToHex(Color p_color)

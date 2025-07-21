@@ -1,5 +1,6 @@
 using HypNot.Player;
 using HypNot.Sounds;
+using HypNot.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -38,17 +39,9 @@ namespace HypNot.Behaviours.UI
             m_direction = Vector2.left;
          }
 
-         m_target = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag);
+         m_target = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.PlayerTag);
 
-         AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
-
-         foreach(AudioSource l_src in l_sources)
-         {
-            if(!l_src.clip.name.Contains("music"))
-            {
-               m_audioPlayer = l_src;
-            }
-         }
+         m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
       }
 
       private void Update()

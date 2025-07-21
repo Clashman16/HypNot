@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ffdb5fce953784ba10fbfed89f966d, type: 3}
+  m_Name: LanguageDatabase
+  m_EditorClassIdentifier: 
+  m_french:
+  - m_id: Menu.Play
+    m_translation: Jouer
+  - m_id: Menu.Settings
+    m_translation: "Param\xE8tres"
+  - m_id: Menu.Quit
+    m_translation: Quitter
+  - m_id: Menu.Resume
+    m_translation: Continuer
+  - m_id: Menu.Main
+    m_translation: Menu
+  - m_id: Menu.Retry
+    m_translation: "R\xE9essayer"
+  - m_id: Menu.Language
+    m_translation: Langue
+  - m_id: Menu.Difficulty
+    m_translation: "Difficult\xE9"
+  - m_id: Menu.Duration
+    m_translation: "Dur\xE9e de<br>jeu "
+  - m_id: Menu.Music
+    m_translation: Musique
+  - m_id: Menu.SFX
+    m_translation: Effets<br>sonores
+  - m_id: Menu.Credits
+    m_translation: "<size=150%>Credits</size><br><br><color=#FF0000>Assets graphiques
+      utilis\xE9s</color><br><br>Tileset Basic Top-down interior par AxulArt<br><br>
+      Spriteheets 500 Pixel Bullet 24x24 par BDragon1727<br><br>Pack Retro RPG Character
+      par The Pixel Nook<br><br>Font Pixelify-Sans par Stefie Justprince<br><br>Pack
+      Pixel Country Flags - 15x10 par DaFluffyPotato<br><br>---------<br><br><color=#FF0000>Sons
+      utilis\xE9s</color><br><br>[8-Bit] Some Elevator Muzak par Hazelstorm<br><br>Ultimate
+      8-Bit SFX Pack! par iGottic<br><br>---------<br><br><color=#FF0000>Package
+      Unity</color><br><br>Package A* Pathfinding par Aron Granberg<br><br><br><br>Logo
+      du jeu par leonix_draw<br><br><color=#7F92FF>Conception et programmation du
+      jeu par Clashman the game dev</color> "
+  m_english:
+  - m_id: Menu.Play
+    m_translation: Play
+  - m_id: Menu.Settings
+    m_translation: Settings
+  - m_id: Menu.Quit
+    m_translation: Quit
+  - m_id: Menu.Resume
+    m_translation: Resume
+  - m_id: Menu.Main
+    m_translation: Main menu
+  - m_id: Menu.Retry
+    m_translation: Retry
+  - m_id: Menu.Language
+    m_translation: Language
+  - m_id: Menu.Difficulty
+    m_translation: Difficulty
+  - m_id: Menu.Duration
+    m_translation: Game duration
+  - m_id: Menu.Music
+    m_translation: Music
+  - m_id: Menu.SFX
+    m_translation: SFX
+  - m_id: Menu.Credits
+    m_translation: "<size=150%>Credits</size><br><br><color=#FF0000>Free graphic
+      assets</color><br><br>AxulArt\xB4s Basic Top-down interior tileset<br><br>BDragon1727's
+      500 Pixel Bullet 24x24 spriteheets<br><br>The Pixel Nook's Retro RPG Character
+      Pack<br><br>Pixelify-Sans font by Stefie Justprince<br><br>DaFluffyPPotato's
+      Pixel Country Flags - 15x10 pack<br><br>---------<br><br><color=#FF0000>Free
+      sounds</color><br><br>Hazelstorm's [8-Bit] Some Elevator Muzak<br><br>iGottic's
+      Ultimate 8-Bit SFX Pack! (FREE) <br><br>---------<br><br><color=#FF0000>Free
+      programming asset</color><br><br>Aron Granberg's A* Pathfinding Package<br><br><br><br>Game
+      logo by leonix_draw<br><br><color=#7F92FF>Game design and programming by Clashman
+      the game dev</color>"

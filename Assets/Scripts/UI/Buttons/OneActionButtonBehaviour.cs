@@ -1,5 +1,6 @@
 using HypNot.Player;
 using HypNot.Sounds;
+using HypNot.Utils;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -12,16 +13,10 @@ namespace HypNot.Behaviours.UI
       {
          if(m_audioPlayer == null)
          {
-            AudioSource[] l_sources = GameObject.FindGameObjectWithTag(PlayerStateSingleton.Instance.PlayerTag).GetComponents<AudioSource>();
-
-            foreach (AudioSource l_src in l_sources)
-            {
-               if (!l_src.clip.name.Contains("music"))
-               {
-                  m_audioPlayer = l_src;
-               }
-            }
+            m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
          }
+
+         m_audioPlayer.volume = PlayerSaveSingleton.Instance.SFXVolume;
 
          m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.ButtonSound;
 
