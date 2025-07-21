@@ -30,11 +30,22 @@ MonoBehaviour:
   - m_id: Menu.Difficulty
     m_translation: "Difficult\xE9"
   - m_id: Menu.Duration
-    m_translation: "Dur\xE9e de jeu"
+    m_translation: "Dur\xE9e de<br>jeu "
   - m_id: Menu.Music
     m_translation: Musique
   - m_id: Menu.SFX
     m_translation: Effets sonores
+  - m_id: Menu.Credits
+    m_translation: "<size=150%>Credits</size><br><br><color=#FF0000>Assets graphiques
+      utilis\xE9s</color><br><br>Tileset Basic Top-down interior par AxulArt<br><br>
+      Spriteheets 500 Pixel Bullet 24x24 par BDragon1727<br><br>Pack Retro RPG Character
+      par The Pixel Nook<br><br>Font Pixelify-Sans par Stefie Justprince<br><br>Pack
+      Pixel Country Flags - 15x10 par DaFluffyPotato<br><br>---------<br><br><color=#FF0000>Sons
+      utilis\xE9s</color><br><br>[8-Bit] Some Elevator Muzak par Hazelstorm<br><br>Ultimate
+      8-Bit SFX Pack! par iGottic<br><br>---------<br><br><color=#FF0000>Package
+      Unity</color><br><br>Package A* Pathfinding par Aron Granberg<br><br><br><br>Logo
+      du jeu par leonix_draw<br><br><color=#7F92FF>Conception et programmation du
+      jeu par Clashman the game dev</color> "
   m_english:
   - m_id: Menu.Play
     m_translation: Play
@@ -58,3 +69,14 @@ MonoBehaviour:
     m_translation: Music
   - m_id: Menu.SFX
     m_translation: SFX
+  - m_id: Menu.Credits
+    m_translation: "<size=150%>Credits</size><br><br><color=#FF0000>Free graphic
+      assets</color><br><br>AxulArt\xB4s Basic Top-down interior tileset<br><br>BDragon1727's
+      500 Pixel Bullet 24x24 spriteheets<br><br>The Pixel Nook's Retro RPG Character
+      Pack<br><br>Pixelify-Sans font by Stefie Justprince<br><br>DaFluffyPPotato's
+      Pixel Country Flags - 15x10 pack<br><br>---------<br><br><color=#FF0000>Free
+      sounds</color><br><br>Hazelstorm's [8-Bit] Some Elevator Muzak<br><br>iGottic's
+      Ultimate 8-Bit SFX Pack! (FREE) <br><br>---------<br><br><color=#FF0000>Free
+      programming asset</color><br><br>Aron Granberg's A* Pathfinding Package<br><br><br><br>Game
+      logo by leonix_draw<br><br><color=#7F92FF>Game design and programming by Clashman
+      the game dev</color>"

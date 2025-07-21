@@ -9022,6 +9022,7 @@ GameObject:
   - component: {fileID: 1887472007}
   - component: {fileID: 1887472009}
   - component: {fileID: 1887472010}
+  - component: {fileID: 1887472011}
   m_Layer: 5
   m_Name: Credits Text
   m_TagString: Untagged
@@ -9068,14 +9069,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=150%>Credits</size>\n\n<color=#FF0000>Free graphic assets:</color>\n\nAxulArt\xB4s
-    Basic Top-down interior tileset\n\nBDragon1727's 500 Pixel Bullet 24x24 spriteheets\n\nToffeeCraft's
-    Retro UI Pack\n\nThe Pixel Nook's Retro RPG Character Pack\n\nPixelify-Sans font
-    by Stefie Justprince\n\nGame logo by leonix_draw\n\n---------\n\n<color=#FF0000>Free
-    sounds:</color>\n\nHazelstorm's [8-Bit] Some Elevator Muzak\n\niGottic's Ultimate
-    8-Bit SFX Pack! (FREE)\n\n---------\n\n<color=#FF0000>Free programming asset:</color>\n\nAron
-    Granberg's A* Pathfinding Package\n\n\n\n<color=#7F92FF>Game design and programming
-    by Clashman the game dev</color>\n\n\n\n"
+  m_text: "<size=150%>Credits</size><br><br><color=#FF0000>Free graphic assets</color><br><br>AxulArt\xB4s
+    Basic Top-down interior tileset<br><br>BDragon1727's 500 Pixel Bullet 24x24 spriteheets<br><br>The
+    Pixel Nook's Retro RPG Character Pack<br><br>Pixelify-Sans font by Stefie Justprince<br><br>DaFluffyPPotato's
+    Pixel Country Flags - 15x10 pack<br><br>---------<br><br><color=#FF0000>Free
+    sounds</color><br><br>Hazelstorm's [8-Bit] Some Elevator Muzak<br><br>iGottic's
+    Ultimate 8-Bit SFX Pack! (FREE) <br><br>---------<br><br><color=#FF0000>Free
+    programming asset</color><br><br>Aron Granberg's A* Pathfinding Package<br><br><br><br>Game
+    logo by leonix_draw<br><br><color=#7F92FF>Game design and programming by Clashman
+    the game dev</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b667cd2c944156b4aa9a99eed1eaa58d, type: 2}
   m_sharedMaterial: {fileID: -3640303257693541424, guid: b667cd2c944156b4aa9a99eed1eaa58d, type: 2}
@@ -9185,6 +9187,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1887472011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887472005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57c0826e0547ed4994e592822ff10ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TranslationId: Menu.Credits
 --- !u!1 &1913924366
 GameObject:
   m_ObjectHideFlags: 0
