@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HypNot.Behaviours.UI
 {
-   public class CreditsBehaviour : MonoBehaviour
+   public class ScrollingCreditsBehaviour : MonoBehaviour
    {
       private Animator m_textAnimator;
 
