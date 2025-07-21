@@ -35,6 +35,8 @@ namespace HypNot.Behaviours.Characters
          m_citizens = new List<CitizenAIBehaviour>();
 
          m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
+
+         m_audioPlayer.volume = PlayerSaveSingleton.Instance.SFXVolume;
       }
 
       public void OnPointerClick(PointerEventData eventData)

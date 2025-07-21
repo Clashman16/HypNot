@@ -1,3 +1,4 @@
+using HypNot.Player;
 using HypNot.Sounds;
 using HypNot.Utils;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace HypNot.Behaviours.UI
          {
             m_sfx = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
          }
+
+         m_sfx.volume = PlayerSaveSingleton.Instance.SFXVolume;
 
          m_sfx.clip = SFXDatabaseSingleton.Instance.Database.EndSound;
 

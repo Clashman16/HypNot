@@ -20,10 +20,7 @@ namespace HypNot.Behaviours.UI
          get => m_valueDisplay;
       }
 
-      public virtual void OnValueChanged()
-      {
-         // Update the right player preference
-      }
+      public abstract void OnValueChanged();
 
       public virtual void Reset()
       {

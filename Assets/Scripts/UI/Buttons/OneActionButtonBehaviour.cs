@@ -16,6 +16,8 @@ namespace HypNot.Behaviours.UI
             m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
          }
 
+         m_audioPlayer.volume = PlayerSaveSingleton.Instance.SFXVolume;
+
          m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.ButtonSound;
 
          m_audioPlayer.Play();

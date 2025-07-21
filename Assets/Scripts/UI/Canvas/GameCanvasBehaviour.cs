@@ -1,3 +1,4 @@
+using HypNot.Player;
 using HypNot.Utils;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ namespace HypNot.Behaviours.UI
          {
             m_backgroundMusic = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.BackgroundMusicPlayerTag).GetComponent<AudioSource>();
          }
+
+         m_backgroundMusic.volume = PlayerSaveSingleton.Instance.BackgroundMusicVolume;
 
          if (!m_backgroundMusic.isPlaying)
          {

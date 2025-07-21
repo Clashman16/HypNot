@@ -42,5 +42,17 @@ namespace HypNot.Player
          get => PlayerPrefs.GetString(string.Concat(m_prefPrefix, "LanguageId"), "english");
          set => PlayerPrefs.SetString(string.Concat(m_prefPrefix, "LanguageId"), value);
       }
+
+      public float BackgroundMusicVolume
+      {
+         get => PlayerPrefs.GetFloat(string.Concat(m_prefPrefix, "BackgroundMusicVolume"), 0.5f);
+         set => PlayerPrefs.SetFloat(string.Concat(m_prefPrefix, "BackgroundMusicVolume"), value);
+      }
+
+      public float SFXVolume
+      {
+         get => PlayerPrefs.GetFloat(string.Concat(m_prefPrefix, "SFXVolume"), 0.5f);
+         set => PlayerPrefs.SetFloat(string.Concat(m_prefPrefix, "SFXVolume"), value);
+      }
    }
 }

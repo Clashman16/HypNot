@@ -34,7 +34,7 @@ MonoBehaviour:
   - m_id: Menu.Music
     m_translation: Musique
   - m_id: Menu.SFX
-    m_translation: Effets sonores
+    m_translation: Effets<br>sonores
   - m_id: Menu.Credits
     m_translation: "<size=150%>Credits</size><br><br><color=#FF0000>Assets graphiques
       utilis\xE9s</color><br><br>Tileset Basic Top-down interior par AxulArt<br><br>
