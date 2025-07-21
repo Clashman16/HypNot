@@ -1,7 +1,5 @@
 using HypNot.Sounds;
 using HypNot.Utils;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI

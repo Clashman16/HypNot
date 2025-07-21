@@ -11,8 +11,6 @@ namespace HypNot.Translations
 
       private TextMeshProUGUI m_textToTranslate;
 
-      private const string l_englishId = "english";
-
       public void Translate()
       {
          if(m_textToTranslate == null)
@@ -20,9 +18,11 @@ namespace HypNot.Translations
             m_textToTranslate = GetComponent<TextMeshProUGUI>();
          }
 
-         m_textToTranslate.text = PlayerSaveSingleton.Instance.LanguageId == l_englishId ?
-            LanguageDatabaseSingleton.Instance.Database.English[m_TranslationId]
-            : LanguageDatabaseSingleton.Instance.Database.French[m_TranslationId];
+         LanguageDatabaseSingleton l_language = LanguageDatabaseSingleton.Instance;
+
+         m_textToTranslate.text = PlayerSaveSingleton.Instance.LanguageId == l_language.EnglishId ?
+            l_language.Database.English[m_TranslationId]
+            : l_language.Database.French[m_TranslationId];
       }
    }
 }

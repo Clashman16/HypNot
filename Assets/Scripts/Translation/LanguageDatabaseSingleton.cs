@@ -8,6 +8,13 @@ namespace HypNot.Translations
    {
       private const string m_databasePath = "ScriptableObjects/LanguageDatabase";
 
+      private const string m_englishId = "english";
+
+      public string EnglishId
+      {
+         get => m_englishId;
+      }
+
       private static LanguageDatabaseSingleton m_instance = null;
 
       private ScriptableLanguageDatabase m_database;
