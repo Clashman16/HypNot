@@ -24,7 +24,7 @@ MonoBehaviour:
   - m_id: Menu.Main
     m_translation: Menu
   - m_id: Menu.Retry
-    m_translation: Recommencer
+    m_translation: "R\xE9essayer"
   - m_id: Menu.Language
     m_translation: Langue
   - m_id: Menu.Difficulty
