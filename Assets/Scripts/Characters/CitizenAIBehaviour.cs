@@ -33,7 +33,7 @@ namespace HypNot.Behaviours.Characters
          set => m_aiPath = value;
       }
 
-      CitizenAnimatorBehaviour m_animator;
+      private CitizenAnimatorBehaviour m_animator;
 
       private void Start()
       {
@@ -52,32 +52,61 @@ namespace HypNot.Behaviours.Characters
 
       private void OnTriggerEnter2D(Collider2D p_collider)
       {
+         AudioSource l_audioPlayer = GetComponent<AudioSource>();
+
+         l_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.CollisionSound;
+
+         l_audioPlayer.Play();
+
          HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();
 
-         if (l_collidedPerson != null && m_target == l_collidedPerson)
+         if (l_collidedPerson != null)
          {
-            AudioSource l_audioPlayer = GetComponent<AudioSource>();
-
-            l_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.CollisionSound;
-
-            l_audioPlayer.Play();
-
-            m_animator.IsDestinationReached = true;
-
-            m_aiPath.canMove = false;
-            m_aiPath.canSearch = false;
-
-            m_target.Citizens.Add(this);
-
-            m_target.Data.ManaCount -= 1;
-
-            if (MapManagerSingleton.Instance.LastSpawnedCitizen == gameObject)
+            if(m_target == l_collidedPerson)
             {
-               PlayerStateSingleton.Instance.CanSendCitizen = true;
+               OnTargetCollided();
             }
+            else
+            {
 
-            HypnotizedPersonSpawnerSingleton.Instance.Spawn();
+            }
          }
+      }
+
+      private void OnTargetCollided()
+      {
+         m_animator.IsDestinationReached = true;
+
+         m_aiPath.canMove = false;
+         m_aiPath.canSearch = false;
+
+         BecomeObstacle();
+
+         m_target.Citizens.Add(this);
+
+         m_target.Data.ManaCount -= 1;
+
+         if (MapManagerSingleton.Instance.LastSpawnedCitizen == gameObject)
+         {
+            PlayerStateSingleton.Instance.CanSendCitizen = true;
+         }
+
+         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
+      }
+
+      private void BecomeObstacle()
+      {
+         Bounds l_bounds = new Bounds(transform.position, 4 * MapManagerSingleton.Instance.PathfindingNodeSize);
+
+         GraphUpdateObject l_graphUpdateObject = new GraphUpdateObject(l_bounds)
+         {
+            modifyWalkability = true,
+            setWalkability = false,
+            updatePhysics = false
+         };
+
+         AstarPath.active.UpdateGraphs(l_graphUpdateObject);
+         AstarPath.active.Scan();
       }
    }
 }
