@@ -119,7 +119,6 @@ namespace HypNot.Behaviours.Characters
 
          AstarPath l_activePath = AstarPath.active;
          l_activePath.UpdateGraphs(l_graphUpdateObject);
-         l_activePath.Scan();
       }
    }
 }

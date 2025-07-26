@@ -53,6 +53,8 @@ namespace HypNot.Behaviours.Characters
                if ((l_playerScore == 1 && l_manaCount == 1)
                   || l_playerScore > 1)
                {
+                  AstarPath.active.Scan();
+
                   CitizenSpawnerSingleton.Instance.Spawn(transform);
 
                   PlayerStateSingleton.Instance.CanSendCitizen = false;
