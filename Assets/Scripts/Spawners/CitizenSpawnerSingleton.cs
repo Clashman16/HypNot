@@ -94,14 +94,32 @@ namespace HypNot.Spawners
 
       private void ActiveCitizenAI(CitizenAIBehaviour p_citizen, Transform p_citizenTarget)
       {
+         HypnotizedPersonTargetBehaviour l_target = p_citizenTarget.GetComponent<HypnotizedPersonTargetBehaviour>();
+
+         Dictionary<Vector2, bool> l_spots = l_target.Data.OccupiedCitizenSpots;
+
+         List<Vector2> l_freeSpots = new List<Vector2>();
+
+         foreach (KeyValuePair<Vector2, bool> l_spot in l_spots)
+         {
+            if (!l_spot.Value)
+            {
+               l_freeSpots.Add(l_spot.Key);
+            }
+         }
+
+         Vector2 l_citizenPosition = p_citizen.transform.position;
+
+         l_freeSpots.Sort((l_a, l_b) => Vector3.Distance(l_citizenPosition, l_a).CompareTo(Vector3.Distance(l_citizenPosition, l_b)));
+
          AIPath l_path = p_citizen.GetComponent<AIPath>();
 
-         l_path.destination = p_citizenTarget.position;
+         l_path.destination = l_freeSpots[0];
 
          l_path.canSearch = true;
          l_path.canMove = true;
 
-         p_citizen.Target = p_citizenTarget.GetComponent<HypnotizedPersonTargetBehaviour>();
+         p_citizen.Target = l_target;
          p_citizen.AIPath = l_path;
       }
 

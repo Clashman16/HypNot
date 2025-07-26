@@ -49,13 +49,22 @@ namespace HypNot.Behaviours.Characters
             m_aiPath.canSearch = false;
             m_animator.IsDestinationReached = true;
          }
+         else
+         {
+            Vector2 l_currentPosition = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
+
+            if (Vector2.Distance(l_currentPosition, m_aiPath.destination) <= NodePositionConverter.NodeSize/2)
+            {
+               transform.position = m_aiPath.destination;
+            }
+         }
       }
 
       private void OnTriggerEnter2D(Collider2D p_collider)
       {
          PlayCollisionSound();
 
-         HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();;
+         HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
@@ -95,7 +104,9 @@ namespace HypNot.Behaviours.Characters
 
       private void BecomeObstacle()
       {
-         transform.position = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
+         m_target.Data.OccupiedCitizenSpots[m_aiPath.destination] = true;
+
+         transform.position = NodePositionConverter.ConvertToNodeWorldPosition(m_aiPath.destination);
 
          Bounds l_bounds = GetComponent<BoxCollider2D>().bounds;
 

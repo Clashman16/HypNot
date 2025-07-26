@@ -92,6 +92,27 @@ namespace HypNot.Spawners
          }
 
          MapManagerSingleton.Instance.HypnotizedPersonTypes[p_hypnotizedPerson.Type] += 1;
+
+         p_hypnotizedPerson.OccupiedCitizenSpots.Clear();
+
+         for (int l_i = 0; l_i < 4; l_i++)
+         {
+            Vector2 l_nodePosition = NodePositionConverter.GetNodeNeighborPosition(p_hypnotizedPerson.transform.position, (CharacterDirection) l_i);
+
+            bool l_isOccupied = false;
+
+            if(p_hypnotizedPerson.HasNeighbor)
+            {
+               Vector2 l_neighborPosition = NodePositionConverter.ConvertToNodeWorldPosition(l_nearbySpot.HypnotizedPerson.transform.position);
+
+               if(l_neighborPosition == l_nodePosition)
+               {
+                  l_isOccupied = true;
+               }
+            }
+
+            p_hypnotizedPerson.OccupiedCitizenSpots.Add(l_nodePosition, l_isOccupied);
+         }
       }
    }
 }
