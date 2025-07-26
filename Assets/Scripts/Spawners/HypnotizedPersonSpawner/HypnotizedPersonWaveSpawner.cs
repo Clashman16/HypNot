@@ -3,6 +3,7 @@ using HypNot.Map;
 using HypNot.Spawners.Utils;
 using HypNot.ScriptableObjects;
 using UnityEngine;
+using HypNot.Utils;
 
 namespace HypNot.Spawners
 {
@@ -50,7 +51,7 @@ namespace HypNot.Spawners
          {
             l_instantiatedHypnotizedPerson = RemoveFromRecycleBin();
 
-            l_instantiatedHypnotizedPerson.transform.position = l_spawnPointPosition;
+            l_instantiatedHypnotizedPerson.transform.position = NodePositionConverter.ConvertToNodeWorldPosition(l_spawnPointPosition);
 
             HypnotizedPersonDataBehaviour l_hypnotizedPerson = l_instantiatedHypnotizedPerson.GetComponent<HypnotizedPersonDataBehaviour>();
 
@@ -61,7 +62,7 @@ namespace HypNot.Spawners
          {
             ScriptableInstantiatedObjectDatabase l_database = SpawnableDatabaseSingleton.Instance.Database;
 
-            l_instantiatedHypnotizedPerson = Object.Instantiate(l_database.HypnotizedPerson, l_spawnPointPosition, Quaternion.identity);
+            l_instantiatedHypnotizedPerson = Object.Instantiate(l_database.HypnotizedPerson, NodePositionConverter.ConvertToNodeWorldPosition(l_spawnPointPosition), Quaternion.identity);
 
             HypnotizedPersonDataBehaviour l_hypnotizedPerson = l_instantiatedHypnotizedPerson.GetComponent<HypnotizedPersonDataBehaviour>();
 

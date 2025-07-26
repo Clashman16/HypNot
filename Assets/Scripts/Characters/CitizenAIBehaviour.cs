@@ -3,6 +3,7 @@ using HypNot.Map;
 using HypNot.Player;
 using HypNot.Sounds;
 using HypNot.Spawners;
+using HypNot.Utils;
 using Pathfinding;
 using UnityEngine;
 
@@ -31,7 +32,7 @@ namespace HypNot.Behaviours.Characters
       {
          get => m_aiPath;
          set => m_aiPath = value;
-      }
+         }
 
       private CitizenAnimatorBehaviour m_animator;
 
@@ -52,25 +53,23 @@ namespace HypNot.Behaviours.Characters
 
       private void OnTriggerEnter2D(Collider2D p_collider)
       {
+         PlayCollisionSound();
+
+         HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();;
+
+         if (l_collidedPerson != null && m_target == l_collidedPerson)
+         {
+            OnTargetCollided();
+         }
+      }
+
+      private void PlayCollisionSound()
+      {
          AudioSource l_audioPlayer = GetComponent<AudioSource>();
 
          l_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.CollisionSound;
 
          l_audioPlayer.Play();
-
-         HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();
-
-         if (l_collidedPerson != null)
-         {
-            if(m_target == l_collidedPerson)
-            {
-               OnTargetCollided();
-            }
-            else
-            {
-
-            }
-         }
       }
 
       private void OnTargetCollided()
@@ -96,7 +95,9 @@ namespace HypNot.Behaviours.Characters
 
       private void BecomeObstacle()
       {
-         Bounds l_bounds = new Bounds(transform.position, 4 * MapManagerSingleton.Instance.PathfindingNodeSize);
+         transform.position = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
+
+         Bounds l_bounds = GetComponent<BoxCollider2D>().bounds;
 
          GraphUpdateObject l_graphUpdateObject = new GraphUpdateObject(l_bounds)
          {
@@ -105,8 +106,9 @@ namespace HypNot.Behaviours.Characters
             updatePhysics = false
          };
 
-         AstarPath.active.UpdateGraphs(l_graphUpdateObject);
-         AstarPath.active.Scan();
+         AstarPath l_activePath = AstarPath.active;
+         l_activePath.UpdateGraphs(l_graphUpdateObject);
+         l_activePath.Scan();
       }
    }
 }
