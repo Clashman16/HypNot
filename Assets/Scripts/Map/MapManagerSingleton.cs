@@ -53,11 +53,6 @@ namespace HypNot.Map
 
       private Vector2 m_pathfindingNodeSize;
 
-      public Vector2 PathfindingNodeSize
-      {
-         get => m_pathfindingNodeSize;
-      }
-
       private MapManagerSingleton()
       {
          m_hypnotizedPersonTypes = new Dictionary<CharacterType, int>();
@@ -73,10 +68,6 @@ namespace HypNot.Map
                m_hypnotizedPersonMana.Add(l_i, 0);
             }
          }
-
-         float l_nodeSize = AstarPath.active.data.gridGraph.nodeSize;
-
-         m_pathfindingNodeSize = new Vector2(l_nodeSize, l_nodeSize);
       }
 
       public void Reset()
