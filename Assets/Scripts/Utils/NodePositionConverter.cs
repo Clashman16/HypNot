@@ -38,6 +38,18 @@ namespace HypNot.Utils
             case CharacterDirection.LEFT:
                l_directionVector = new Vector2(-NodeSize, 0);
                break;
+            case CharacterDirection.UP_LEFT:
+               l_directionVector = new Vector2(-NodeSize, NodeSize);
+               break;
+            case CharacterDirection.UP_RIGHT:
+               l_directionVector = new Vector2(NodeSize, NodeSize);
+               break;
+            case CharacterDirection.DOWN_LEFT:
+               l_directionVector = new Vector2(-NodeSize, -NodeSize);
+               break;
+            case CharacterDirection.DOWN_RIGHT:
+               l_directionVector = new Vector2(NodeSize, -NodeSize);
+               break;
             default:
                l_directionVector = new Vector2(NodeSize, 0);
                break;
