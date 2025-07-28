@@ -4,6 +4,7 @@ using HypNot.Spawners.Utils;
 using HypNot.ScriptableObjects;
 using UnityEngine;
 using HypNot.Utils;
+using HypNot.Behaviours.Utils;
 
 namespace HypNot.Spawners
 {
@@ -97,7 +98,7 @@ namespace HypNot.Spawners
 
          for (int l_i = 0; l_i < 4; l_i++)
          {
-            Vector2 l_nodePosition = NodePositionConverter.GetNodeNeighborPosition(p_hypnotizedPerson.transform.position, (CharacterDirection) l_i);
+            Vector2 l_nodePosition = NodePositionConverter.GetNodeNeighborPosition(p_hypnotizedPerson.transform.position, (Direction) l_i);
 
             bool l_isOccupied = false;
 

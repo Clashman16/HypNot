@@ -1,4 +1,4 @@
-using HypNot.Behaviours.Characters;
+using HypNot.Behaviours.Utils;
 using Pathfinding;
 using UnityEngine;
 
@@ -23,31 +23,31 @@ namespace HypNot.Utils
          }
       }
 
-      public static Vector2 GetNodeNeighborPosition(Vector2 p_NodePosition, CharacterDirection p_direction)
+      public static Vector2 GetNodeNeighborPosition(Vector2 p_NodePosition, Direction p_direction)
       {
          Vector2 l_directionVector;
 
          switch (p_direction)
          {
-            case CharacterDirection.UP:
+            case Direction.UP:
                l_directionVector = new Vector2(0, NodeSize);
                break;
-            case CharacterDirection.DOWN:
+            case Direction.DOWN:
                l_directionVector = new Vector2(0, -NodeSize);
                break;
-            case CharacterDirection.LEFT:
+            case Direction.LEFT:
                l_directionVector = new Vector2(-NodeSize, 0);
                break;
-            case CharacterDirection.UP_LEFT:
+            case Direction.UP_LEFT:
                l_directionVector = new Vector2(-NodeSize, NodeSize);
                break;
-            case CharacterDirection.UP_RIGHT:
+            case Direction.UP_RIGHT:
                l_directionVector = new Vector2(NodeSize, NodeSize);
                break;
-            case CharacterDirection.DOWN_LEFT:
+            case Direction.DOWN_LEFT:
                l_directionVector = new Vector2(-NodeSize, -NodeSize);
                break;
-            case CharacterDirection.DOWN_RIGHT:
+            case Direction.DOWN_RIGHT:
                l_directionVector = new Vector2(NodeSize, -NodeSize);
                break;
             default:

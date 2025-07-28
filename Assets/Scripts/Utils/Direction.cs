@@ -1,6 +1,6 @@
-namespace HypNot.Behaviours.Characters
+namespace HypNot.Behaviours.Utils
 {
-   public enum CharacterDirection
+   public enum Direction
    {
       UP,
       DOWN,

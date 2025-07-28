@@ -1,4 +1,4 @@
-using HypNot.Behaviours.Characters;
+using HypNot.Behaviours.Utils;
 using HypNot.Utils;
 using Pathfinding;
 using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace HypNot.Map
 
                for (int l_i = 0; l_i < 8; l_i++)
                {
-                  Vector2 l_neighborhoodPosition = NodePositionConverter.GetNodeNeighborPosition(l_nodePosition, (CharacterDirection)l_i);
+                  Vector2 l_neighborhoodPosition = NodePositionConverter.GetNodeNeighborPosition(l_nodePosition, (Direction) l_i);
                   GraphNode l_node = NodePositionConverter.GetNodeFromPosition(l_neighborhoodPosition);
 
                   if (MapManagerSingleton.Instance.Collidables.TryGetValue(l_node, out List<CollidableDataBehaviour> l_neighborhood))
