@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HypNot.Behaviours.Characters
 {
-   public class HypnotizedPersonDataBehaviour : MonoBehaviour
+   public class HypnotizedPersonDataBehaviour : CollidableDataBehaviour
    {
       private CharacterType m_type;
 

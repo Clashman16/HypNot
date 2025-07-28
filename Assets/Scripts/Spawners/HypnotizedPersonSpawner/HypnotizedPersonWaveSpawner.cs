@@ -113,6 +113,8 @@ namespace HypNot.Spawners
 
             p_hypnotizedPerson.OccupiedCitizenSpots.Add(l_nodePosition, l_isOccupied);
          }
+
+         MapManagerSingleton.Instance.AddCollidable(p_hypnotizedPerson);
       }
    }
 }

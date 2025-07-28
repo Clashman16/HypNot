@@ -11,13 +11,7 @@ namespace HypNot.Behaviours.Characters
 {
    public class CitizenAIBehaviour : MonoBehaviour
    {
-      private CharacterType m_type;
-
-      public CharacterType Type
-      {
-         get => m_type;
-         set => m_type = value;
-      }
+      private CitizenDataBehaviour m_data;
 
       private HypnotizedPersonTargetBehaviour m_target;
 
@@ -90,7 +84,12 @@ namespace HypNot.Behaviours.Characters
 
          BecomeObstacle();
 
-         m_target.Citizens.Add(this);
+         if(m_data == null)
+         {
+            m_data = GetComponent<CitizenDataBehaviour>();
+         }
+
+         m_target.Citizens.Add(m_data);
 
          m_target.Data.ManaCount -= 1;
 
