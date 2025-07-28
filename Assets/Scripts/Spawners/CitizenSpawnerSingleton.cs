@@ -49,6 +49,8 @@ namespace HypNot.Spawners
 
             CitizenDataBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenDataBehaviour>();
 
+            l_citizen.IsMovable = true;
+
             ActiveCitizenAI(l_citizen, p_citizenTarget);
          }
 
@@ -127,6 +129,7 @@ namespace HypNot.Spawners
 
          l_ai.Target = l_target;
          l_ai.AIPath = l_path;
+         l_ai.FirstDestination = l_path.destination;
 
          MapManagerSingleton.Instance.AddCollidable(p_citizen);
       }

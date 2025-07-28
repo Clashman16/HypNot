@@ -26,9 +26,20 @@ namespace HypNot.Behaviours.Characters
       {
          get => m_aiPath;
          set => m_aiPath = value;
-         }
+      }
 
       private CitizenAnimatorBehaviour m_animator;
+
+      private const float m_avoidanceAngle = 45f;
+
+      private const float m_avoidanceDistance = 0.025f;
+
+      private Vector2 m_firstDestination;
+
+      public Vector2 FirstDestination
+      {
+         set => m_firstDestination = value;
+      }
 
       private void Start()
       {
@@ -47,7 +58,13 @@ namespace HypNot.Behaviours.Characters
          {
             Vector2 l_currentPosition = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
 
-            if (Vector2.Distance(l_currentPosition, m_aiPath.destination) <= NodePositionConverter.NodeSize/2)
+            if (m_aiPath.reachedDestination && m_aiPath.destination != (Vector3)m_firstDestination)
+            {
+               m_aiPath.destination = m_firstDestination;
+               m_aiPath.SearchPath();
+            }
+
+            else if (Vector2.Distance(l_currentPosition, m_aiPath.destination) <= NodePositionConverter.NodeSize/2)
             {
                transform.position = m_aiPath.destination;
             }
@@ -56,6 +73,11 @@ namespace HypNot.Behaviours.Characters
 
       private void OnTriggerEnter2D(Collider2D p_collider)
       {
+         if (m_data == null)
+         {
+            m_data = GetComponent<CitizenDataBehaviour>();
+         }
+
          PlayCollisionSound();
 
          HypnotizedPersonTargetBehaviour l_collidedPerson = p_collider.GetComponent<HypnotizedPersonTargetBehaviour>();
@@ -63,6 +85,17 @@ namespace HypNot.Behaviours.Characters
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
             OnTargetCollided();
+         }
+         else if(m_data.IsMovable)
+         {
+            Vector2 l_curentDirection = (transform.position - p_collider.transform.position).normalized;
+
+            Vector2 l_newDirection = m_avoidanceDistance * (transform.position + 
+               Quaternion.Euler(0, 0, Random.Range(0, 1f) < 0.5 ? -m_avoidanceAngle : m_avoidanceAngle)
+               * -l_curentDirection);
+
+            m_aiPath.destination = l_newDirection;
+            m_aiPath.SearchPath();
          }
       }
 
@@ -83,11 +116,6 @@ namespace HypNot.Behaviours.Characters
          m_aiPath.canSearch = false;
 
          BecomeObstacle();
-
-         if(m_data == null)
-         {
-            m_data = GetComponent<CitizenDataBehaviour>();
-         }
 
          m_target.Citizens.Add(m_data);
 
@@ -111,6 +139,8 @@ namespace HypNot.Behaviours.Characters
          {
             l_node.Walkable = false;
          }
+
+         m_data.IsMovable = false;
       }
    }
 }
