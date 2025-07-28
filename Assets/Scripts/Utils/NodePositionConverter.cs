@@ -1,7 +1,6 @@
 using HypNot.Behaviours.Characters;
 using Pathfinding;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace HypNot.Utils
 {
@@ -45,6 +44,15 @@ namespace HypNot.Utils
          }
 
          return ConvertToNodeWorldPosition(p_NodePosition + l_directionVector);
+      }
+
+      public static GraphNode GetNodeFromPosition(Vector2 p_position)
+      {
+         AstarPath l_activePath = AstarPath.active;
+
+         GridGraph l_graph = l_activePath.data.gridGraph;
+
+         return l_graph.GetNearest(p_position).node;
       }
    }
 }

@@ -106,19 +106,12 @@ namespace HypNot.Behaviours.Characters
       {
          m_target.Data.OccupiedCitizenSpots[m_aiPath.destination] = true;
 
-         transform.position = NodePositionConverter.ConvertToNodeWorldPosition(m_aiPath.destination);
+         GraphNode l_node = NodePositionConverter.GetNodeFromPosition(m_aiPath.destination);
 
-         Bounds l_bounds = GetComponent<BoxCollider2D>().bounds;
-
-         GraphUpdateObject l_graphUpdateObject = new GraphUpdateObject(l_bounds)
+         if (l_node != null && l_node.Walkable)
          {
-            modifyWalkability = true,
-            setWalkability = false,
-            updatePhysics = false
-         };
-
-         AstarPath l_activePath = AstarPath.active;
-         l_activePath.UpdateGraphs(l_graphUpdateObject);
+            l_node.Walkable = false;
+         }
       }
    }
 }
