@@ -47,7 +47,9 @@ namespace HypNot.Spawners
 
             l_instantiatedCitizen.GetComponent<CitizenAnimatorBehaviour>().IsDestinationReached = false;
 
-            CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
+            CitizenDataBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenDataBehaviour>();
+
+            l_citizen.IsMovable = true;
 
             ActiveCitizenAI(l_citizen, p_citizenTarget);
          }
@@ -82,7 +84,7 @@ namespace HypNot.Spawners
             l_animator.runtimeAnimatorController = l_database.AnimatorsByName[l_citizenName];
             l_animator.Rebind();
 
-            CitizenAIBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenAIBehaviour>();
+            CitizenDataBehaviour l_citizen = l_instantiatedCitizen.GetComponent<CitizenDataBehaviour>();
 
             l_citizen.Type = l_type;
 
@@ -92,22 +94,49 @@ namespace HypNot.Spawners
          MapManagerSingleton.Instance.LastSpawnedCitizen = l_instantiatedCitizen;
       }
 
-      private void ActiveCitizenAI(CitizenAIBehaviour p_citizen, Transform p_citizenTarget)
+      private void ActiveCitizenAI(CitizenDataBehaviour p_citizen, Transform p_citizenTarget)
       {
+         p_citizen.OrderInLayer = MapManagerSingleton.Instance.OrderInLayer;
+
+         MapManagerSingleton.Instance.OrderInLayer += 1;
+
+         HypnotizedPersonTargetBehaviour l_target = p_citizenTarget.GetComponent<HypnotizedPersonTargetBehaviour>();
+
+         Dictionary<Vector2, bool> l_spots = l_target.Data.OccupiedCitizenSpots;
+
+         List<Vector2> l_freeSpots = new List<Vector2>();
+
+         foreach (KeyValuePair<Vector2, bool> l_spot in l_spots)
+         {
+            if (!l_spot.Value)
+            {
+               l_freeSpots.Add(l_spot.Key);
+            }
+         }
+
+         Vector2 l_citizenPosition = p_citizen.transform.position;
+
+         l_freeSpots.Sort((l_a, l_b) => Vector3.Distance(l_citizenPosition, l_a).CompareTo(Vector3.Distance(l_citizenPosition, l_b)));
+
          AIPath l_path = p_citizen.GetComponent<AIPath>();
 
-         l_path.destination = p_citizenTarget.position;
+         l_path.destination = l_freeSpots[0];
 
          l_path.canSearch = true;
          l_path.canMove = true;
 
-         p_citizen.Target = p_citizenTarget.GetComponent<HypnotizedPersonTargetBehaviour>();
-         p_citizen.AIPath = l_path;
+         CitizenAIBehaviour l_ai = p_citizen.GetComponent<CitizenAIBehaviour>();
+
+         l_ai.Target = l_target;
+         l_ai.AIPath = l_path;
+         l_ai.FirstDestination = l_path.destination;
+
+         MapManagerSingleton.Instance.AddCollidable(p_citizen);
       }
 
       public override void AddToRecycleBin(GameObject p_object)
       {
-         CharacterType l_type = p_object.GetComponent<CitizenAIBehaviour>().Type;
+         CharacterType l_type = p_object.GetComponent<CitizenDataBehaviour>().Type;
 
          CitizenIndicatorBehaviour l_scoreIndicator = Object.FindObjectOfType<CitizenIndicatorBehaviour>();
          l_scoreIndicator.Type = l_type;

@@ -3,6 +3,8 @@ using HypNot.Map;
 using HypNot.Spawners.Utils;
 using HypNot.ScriptableObjects;
 using UnityEngine;
+using HypNot.Utils;
+using HypNot.Behaviours.Utils;
 
 namespace HypNot.Spawners
 {
@@ -50,7 +52,7 @@ namespace HypNot.Spawners
          {
             l_instantiatedHypnotizedPerson = RemoveFromRecycleBin();
 
-            l_instantiatedHypnotizedPerson.transform.position = l_spawnPointPosition;
+            l_instantiatedHypnotizedPerson.transform.position = NodePositionConverter.ConvertToNodeWorldPosition(l_spawnPointPosition);
 
             HypnotizedPersonDataBehaviour l_hypnotizedPerson = l_instantiatedHypnotizedPerson.GetComponent<HypnotizedPersonDataBehaviour>();
 
@@ -61,7 +63,7 @@ namespace HypNot.Spawners
          {
             ScriptableInstantiatedObjectDatabase l_database = SpawnableDatabaseSingleton.Instance.Database;
 
-            l_instantiatedHypnotizedPerson = Object.Instantiate(l_database.HypnotizedPerson, l_spawnPointPosition, Quaternion.identity);
+            l_instantiatedHypnotizedPerson = Object.Instantiate(l_database.HypnotizedPerson, NodePositionConverter.ConvertToNodeWorldPosition(l_spawnPointPosition), Quaternion.identity);
 
             HypnotizedPersonDataBehaviour l_hypnotizedPerson = l_instantiatedHypnotizedPerson.GetComponent<HypnotizedPersonDataBehaviour>();
 
@@ -91,6 +93,29 @@ namespace HypNot.Spawners
          }
 
          MapManagerSingleton.Instance.HypnotizedPersonTypes[p_hypnotizedPerson.Type] += 1;
+
+         p_hypnotizedPerson.OccupiedCitizenSpots.Clear();
+
+         for (int l_i = 0; l_i < 4; l_i++)
+         {
+            Vector2 l_nodePosition = NodePositionConverter.GetNodeNeighborPosition(p_hypnotizedPerson.transform.position, (Direction) l_i);
+
+            bool l_isOccupied = false;
+
+            if(p_hypnotizedPerson.HasNeighbor)
+            {
+               Vector2 l_neighborPosition = NodePositionConverter.ConvertToNodeWorldPosition(l_nearbySpot.HypnotizedPerson.transform.position);
+
+               if(l_neighborPosition == l_nodePosition)
+               {
+                  l_isOccupied = true;
+               }
+            }
+
+            p_hypnotizedPerson.OccupiedCitizenSpots.Add(l_nodePosition, l_isOccupied);
+         }
+
+         MapManagerSingleton.Instance.AddCollidable(p_hypnotizedPerson);
       }
    }
 }

@@ -1,3 +1,4 @@
+using HypNot.Behaviours.Utils;
 using HypNot.Sounds;
 using Pathfinding;
 using UnityEngine;
@@ -21,9 +22,9 @@ namespace HypNot.Behaviours.Characters
 
       private bool m_lastIsMoving;
 
-      private CharacterDirection m_currentDirection;
+      private Direction m_currentDirection;
 
-      private CharacterDirection m_lastDirection;
+      private Direction m_lastDirection;
 
       private int m_animIndex;
 
@@ -57,7 +58,7 @@ namespace HypNot.Behaviours.Characters
 
          m_animator = GetComponent<Animator>();
 
-         m_currentDirection = CharacterDirection.DOWN;
+         m_currentDirection = Direction.DOWN;
          m_lastDirection = m_currentDirection;
 
          m_audioPlayer = GetComponent<FootStepAudioPlayerBehaviour>();
@@ -91,19 +92,19 @@ namespace HypNot.Behaviours.Characters
 
             if (l_velocity.x > 0)
             {
-               m_currentDirection = CharacterDirection.RIGHT;
+               m_currentDirection = Direction.RIGHT;
             }
             else if (l_velocity.x < 0)
             {
-               m_currentDirection = CharacterDirection.LEFT;
+               m_currentDirection = Direction.LEFT;
             }
             else if (l_velocity.y > 0)
             {
-               m_currentDirection = CharacterDirection.UP;
+               m_currentDirection = Direction.UP;
             }
             else if (l_velocity.y < 0)
             {
-               m_currentDirection = CharacterDirection.DOWN;
+               m_currentDirection = Direction.DOWN;
             }
             else
             {

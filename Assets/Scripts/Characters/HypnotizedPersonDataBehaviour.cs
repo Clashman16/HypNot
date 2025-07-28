@@ -1,9 +1,10 @@
 using HypNot.Map;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HypNot.Behaviours.Characters
 {
-   public class HypnotizedPersonDataBehaviour : MonoBehaviour
+   public class HypnotizedPersonDataBehaviour : CollidableDataBehaviour
    {
       private CharacterType m_type;
 
@@ -75,6 +76,13 @@ namespace HypNot.Behaviours.Characters
       {
          get => m_spawnPoint;
          set => m_spawnPoint = value;
+      }
+
+      private Dictionary<Vector2, bool> m_occupiedCitizenSpots = new Dictionary<Vector2, bool>();
+
+      public Dictionary<Vector2, bool> OccupiedCitizenSpots
+      {
+         get => m_occupiedCitizenSpots;
       }
    }
 }

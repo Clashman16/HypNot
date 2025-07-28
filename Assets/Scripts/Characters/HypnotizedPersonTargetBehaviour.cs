@@ -19,9 +19,9 @@ namespace HypNot.Behaviours.Characters
          get => m_data;
       }
 
-      private List<CitizenAIBehaviour> m_citizens;
+      private List<CitizenDataBehaviour> m_citizens;
 
-      public List<CitizenAIBehaviour> Citizens
+      public List<CitizenDataBehaviour> Citizens
       {
          get => m_citizens;
       }
@@ -32,7 +32,7 @@ namespace HypNot.Behaviours.Characters
       {
          m_data = GetComponent<HypnotizedPersonDataBehaviour>();
 
-         m_citizens = new List<CitizenAIBehaviour>();
+         m_citizens = new List<CitizenDataBehaviour>();
 
          m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
 
@@ -53,6 +53,8 @@ namespace HypNot.Behaviours.Characters
                if ((l_playerScore == 1 && l_manaCount == 1)
                   || l_playerScore > 1)
                {
+                  AstarPath.active.Scan();
+
                   CitizenSpawnerSingleton.Instance.Spawn(transform);
 
                   PlayerStateSingleton.Instance.CanSendCitizen = false;
@@ -65,8 +67,10 @@ namespace HypNot.Behaviours.Characters
       {
          PlayerScoreSingleton.Instance.Score += 1;
 
-         foreach (CitizenAIBehaviour l_citizen in m_citizens)
+         foreach (CitizenDataBehaviour l_citizen in m_citizens)
          {
+            MapManagerSingleton.Instance.RemoveCollidable(l_citizen);
+
             CitizenSpawnerSingleton.Instance.AddToRecycleBin(l_citizen.gameObject);
          }
 
@@ -85,6 +89,8 @@ namespace HypNot.Behaviours.Characters
          MapManagerSingleton.Instance.HypnotizedPersonMana[l_mana] = l_manaCount == 0 ? 0 : l_manaCount - 1;
 
          CitizenSpawnerSingleton.Instance.AddToTypeRecycleBin(l_type);
+
+         MapManagerSingleton.Instance.RemoveCollidable(m_data);
 
          HypnotizedPersonSpawnerSingleton.Instance.WaveSpawner.AddToRecycleBin(gameObject);
 
