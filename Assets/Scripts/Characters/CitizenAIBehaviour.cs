@@ -84,7 +84,10 @@ namespace HypNot.Behaviours.Characters
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
-            OnTargetCollided();
+            if(m_aiPath.canMove && m_aiPath.canSearch)
+            {
+               OnTargetCollided();
+            }
          }
          else if(m_data.IsMovable)
          {
