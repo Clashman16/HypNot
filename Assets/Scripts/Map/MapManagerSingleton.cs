@@ -145,6 +145,13 @@ namespace HypNot.Map
 
          m_collidables.Clear();
 
+         TilemapDataBehaviour[] l_tilemaps = Object.FindObjectsByType<TilemapDataBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+         foreach (TilemapDataBehaviour l_tilemap in l_tilemaps)
+         {
+            l_tilemap.RegisterCollidableToDatabase();
+         }
+
          CitizenAIBehaviour[] l_citizens = Object.FindObjectsByType<CitizenAIBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
          foreach (CitizenAIBehaviour l_citizen in l_citizens)
