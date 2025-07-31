@@ -69,6 +69,15 @@ namespace HypNot.Behaviours.Characters
          }
       }
 
+      public void OnCollided(CitizenDataBehaviour p_citizen)
+      {
+         m_citizens.Add(p_citizen);
+
+         m_data.ManaCount -= 1;
+
+         m_button.gameObject.SetActive(true);
+      }
+
       public void OnPersonSaved()
       {
          PlayerScoreSingleton.Instance.Score += 1;
