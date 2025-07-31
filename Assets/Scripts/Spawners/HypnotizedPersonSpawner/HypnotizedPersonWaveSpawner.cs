@@ -73,6 +73,8 @@ namespace HypNot.Spawners
 
       private void InitHypnotizedPerson(HypnotizedPersonDataBehaviour p_hypnotizedPerson, HypnotizedPersonSpawnPointBehaviour p_spawnPoint, bool p_mustPickType = false)
       {
+         p_hypnotizedPerson.GetComponentInChildren<Canvas>().worldCamera = Camera.main;
+
          HypnotizedPersonSpawnPointBehaviour l_nearbySpot = p_spawnPoint.NearbySpot;
 
          p_hypnotizedPerson.HasNeighbor = l_nearbySpot != null && l_nearbySpot.IsSlotOccupied;

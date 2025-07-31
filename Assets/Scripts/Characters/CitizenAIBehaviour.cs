@@ -126,9 +126,7 @@ namespace HypNot.Behaviours.Characters
 
          BecomeObstacle();
 
-         m_target.Citizens.Add(m_data);
-
-         m_target.Data.ManaCount -= 1;
+         m_target.OnCollided(m_data);
 
          if (MapManagerSingleton.Instance.LastSpawnedCitizen == gameObject)
          {
