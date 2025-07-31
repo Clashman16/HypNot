@@ -30,8 +30,8 @@ namespace HypNot.Spawners
 
          LevelZoneBehaviour[] l_levelZonesTemp = Object.FindObjectsByType<LevelZoneBehaviour>(FindObjectsSortMode.None);
 
-         Vector3 l_bottomLeft = m_camera.ViewportToWorldPoint(new Vector3(0, 0, m_camera.nearClipPlane));
-         Vector3 l_topRight = m_camera.ViewportToWorldPoint(new Vector3(1, 1, m_camera.nearClipPlane));
+         Vector2 l_bottomLeft = m_camera.ViewportToWorldPoint(new Vector2(0, 0));
+         Vector2 l_topRight = m_camera.ViewportToWorldPoint(new Vector2(1, 1));
 
          Rect l_camRect = new Rect(
              l_bottomLeft.x,
@@ -46,8 +46,18 @@ namespace HypNot.Spawners
          {
             Transform l_zoneTrf = l_zone.transform;
 
-            Vector3 l_zoneCenter = l_zoneTrf.position;
-            if (!l_camRect.Contains(new Vector2(l_zoneCenter.x, l_zoneCenter.y)))
+            Vector2 l_zoneCenter = l_zoneTrf.position;
+
+            Vector2 l_zoneSize = l_zone.Size;
+
+            Rect l_zoneRect = new Rect(
+               l_zoneCenter.x - l_zoneSize.x / 2f,
+               l_zoneCenter.y - l_zoneSize.y / 2f,
+               l_zoneSize.x,
+               l_zoneSize.y
+            );
+
+            if (!l_camRect.Overlaps(l_zoneRect, true))
             {
                for(int l_i = 0; l_i  < l_zoneTrf.childCount; l_i++)
                {
