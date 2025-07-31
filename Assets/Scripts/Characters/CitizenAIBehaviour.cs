@@ -2,7 +2,6 @@ using HypNot.Behaviours.UI;
 using HypNot.Map;
 using HypNot.Player;
 using HypNot.Sounds;
-using HypNot.Spawners;
 using HypNot.Utils;
 using Pathfinding;
 using UnityEngine;
@@ -132,8 +131,6 @@ namespace HypNot.Behaviours.Characters
          {
             PlayerStateSingleton.Instance.CanSendCitizen = true;
          }
-
-         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
       }
 
       private void BecomeObstacle()
