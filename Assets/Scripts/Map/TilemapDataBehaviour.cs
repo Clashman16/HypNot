@@ -1,8 +1,6 @@
-using HypNot.Utils;
 using Pathfinding;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace HypNot.Map
 {
