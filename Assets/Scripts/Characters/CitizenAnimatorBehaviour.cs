@@ -9,7 +9,7 @@ namespace HypNot.Behaviours.Characters
    {
       private Animator m_animator;
 
-      private AIPath m_aiPath;
+      private AILerp m_aiLerp;
 
       private bool m_isDestinationReached;
 
@@ -72,14 +72,14 @@ namespace HypNot.Behaviours.Characters
          }
          else
          {
-            if (m_aiPath == null)
+            if (m_aiLerp == null)
             {
-               m_aiPath = GetComponent<CitizenAIBehaviour>().AIPath;
+               m_aiLerp = GetComponent<CitizenAIBehaviour>().AILerp;
             }
 
             m_isMoving = true;
 
-            Vector3 l_velocity = m_aiPath.velocity;
+            Vector3 l_velocity = m_aiLerp.velocity;
 
             if (Mathf.Abs(l_velocity.x) > Mathf.Abs(l_velocity.y))
             {

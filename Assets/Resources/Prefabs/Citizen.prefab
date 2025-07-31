@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4048183703675813923}
   - component: {fileID: -534286279142643378}
   - component: {fileID: 7672031733110331336}
-  - component: {fileID: 74084685777631561}
-  - component: {fileID: 4918990031666203745}
+  - component: {fileID: 4764677874230128394}
+  - component: {fileID: -2222771333518046191}
   - component: {fileID: 1137601828993616374}
   - component: {fileID: 4190971351750855799}
   - component: {fileID: 2107309833290130026}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd30773b322991409747575f52b673e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &74084685777631561
+--- !u!114 &4764677874230128394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258608244791976874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Script: {fileID: 11500000, guid: a7c73ea1227b40345a017a76cf41c4d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
@@ -107,7 +107,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &4918990031666203745
+--- !u!114 &-2222771333518046191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,39 +116,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258608244791976874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
-  radius: 0.5
-  height: 2
-  canMove: 1
-  maxSpeed: 1
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  repathRateCompatibility: NaN
-  canSearchCompability: 0
-  orientation: 1
-  enableRotation: 0
+  version: 4
   autoRepath:
     mode: 2
     interval: 0.5
     sensitivity: 10
     maximumInterval: 2
     visualizeSensitivity: 0
+  canMove: 1
+  speed: 1
+  orientation: 1
+  enableRotation: 0
+  rotationSpeed: 10
+  interpolatePathSwitches: 1
+  switchPathInterpolationSpeed: 5
   targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
+  repathRateCompatibility: NaN
+  canSearchCompability: 0
 --- !u!212 &1137601828993616374
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -118,7 +118,7 @@ namespace HypNot.Spawners
 
          l_freeSpots.Sort((l_a, l_b) => Vector3.Distance(l_citizenPosition, l_a).CompareTo(Vector3.Distance(l_citizenPosition, l_b)));
 
-         AIPath l_path = p_citizen.GetComponent<AIPath>();
+         AILerp l_path = p_citizen.GetComponent<AILerp>();
 
          l_path.destination = l_freeSpots[0];
 
@@ -128,8 +128,8 @@ namespace HypNot.Spawners
          CitizenAIBehaviour l_ai = p_citizen.GetComponent<CitizenAIBehaviour>();
 
          l_ai.Target = l_target;
-         l_ai.AIPath = l_path;
-         l_ai.FirstDestination = l_path.destination;
+         l_ai.AILerp = l_path;
+         l_ai.Destination = l_path.destination;
 
          MapManagerSingleton.Instance.AddCollidable(p_citizen);
       }

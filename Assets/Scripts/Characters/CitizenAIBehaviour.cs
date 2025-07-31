@@ -20,53 +20,66 @@ namespace HypNot.Behaviours.Characters
          set => m_target = value;
       }
 
-      private AIPath m_aiPath;
+      private AILerp m_aiLerp;
 
-      public AIPath AIPath
+      public AILerp AILerp
       {
-         get => m_aiPath;
-         set => m_aiPath = value;
+         get => m_aiLerp;
+         set
+         {
+            m_aiLerp = value;
+
+            if(m_obstacleAvoider == null)
+            {
+               m_obstacleAvoider = GetComponent<CitizenObstacleAvoiderBehaviour>();
+            }
+
+            m_obstacleAvoider.AILerp = m_aiLerp;
+
+            if (m_animator == null)
+            {
+               m_animator = GetComponent<CitizenAnimatorBehaviour>();
+            }
+         }
+      }
+
+      Vector2 m_destination;
+
+      public Vector2 Destination
+      {
+         set
+         {
+            m_destination = value;
+            m_aiLerp.destination = value;
+         }
       }
 
       private CitizenAnimatorBehaviour m_animator;
 
-      private const float m_avoidanceAngle = 45f;
-
-      private const float m_avoidanceDistance = 0.025f;
-
-      private Vector2 m_firstDestination;
-
-      public Vector2 FirstDestination
-      {
-         set => m_firstDestination = value;
-      }
-
-      private void Start()
-      {
-         m_animator = GetComponent<CitizenAnimatorBehaviour>();
-      }
+      private CitizenObstacleAvoiderBehaviour m_obstacleAvoider;
 
       private void Update()
       {
-         if(PlayerStateSingleton.Instance.GameScreen != GameScreen.GAME_SCREEN)
+         if (PlayerStateSingleton.Instance.GameScreen != GameScreen.GAME_SCREEN)
          {
-            m_aiPath.canMove = false;
-            m_aiPath.canSearch = false;
+            m_aiLerp.canMove = false;
+            m_aiLerp.canSearch = false;
             m_animator.IsDestinationReached = true;
          }
          else
          {
-            Vector2 l_currentPosition = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
-
-            if (m_aiPath.reachedDestination && m_aiPath.destination != (Vector3)m_firstDestination)
+            if (m_obstacleAvoider.IsRetreating && m_aiLerp.reachedDestination && m_aiLerp.destination != (Vector3) m_destination)
             {
-               m_aiPath.destination = m_firstDestination;
-               m_aiPath.SearchPath();
+               m_obstacleAvoider.CalculateCustomPath(m_destination);
             }
-
-            else if (Vector2.Distance(l_currentPosition, m_aiPath.destination) <= NodePositionConverter.NodeSize/2)
+            else
             {
-               transform.position = m_aiPath.destination;
+               Vector2 l_currentPosition = NodePositionConverter.ConvertToNodeWorldPosition(transform.position);
+
+               if (Vector2.Distance(l_currentPosition, m_destination) <= NodePositionConverter.NodeSize / 2)
+               {
+                  transform.position = m_destination;
+               }
             }
          }
       }
@@ -84,18 +97,14 @@ namespace HypNot.Behaviours.Characters
 
          if (l_collidedPerson != null && m_target == l_collidedPerson)
          {
-            OnTargetCollided();
+            if(m_aiLerp.canMove && m_aiLerp.canSearch)
+            {
+               OnTargetCollided();
+            }
          }
          else if(m_data.IsMovable)
          {
-            Vector2 l_curentDirection = (transform.position - p_collider.transform.position).normalized;
-
-            Vector2 l_newDirection = m_avoidanceDistance * (transform.position + 
-               Quaternion.Euler(0, 0, Random.Range(0, 1f) < 0.5 ? -m_avoidanceAngle : m_avoidanceAngle)
-               * -l_curentDirection);
-
-            m_aiPath.destination = l_newDirection;
-            m_aiPath.SearchPath();
+            m_obstacleAvoider.GoBack(transform.position);
          }
       }
 
@@ -112,8 +121,8 @@ namespace HypNot.Behaviours.Characters
       {
          m_animator.IsDestinationReached = true;
 
-         m_aiPath.canMove = false;
-         m_aiPath.canSearch = false;
+         m_aiLerp.canMove = false;
+         m_aiLerp.canSearch = false;
 
          BecomeObstacle();
 
@@ -131,9 +140,9 @@ namespace HypNot.Behaviours.Characters
 
       private void BecomeObstacle()
       {
-         m_target.Data.OccupiedCitizenSpots[m_aiPath.destination] = true;
+         m_target.Data.OccupiedCitizenSpots[m_aiLerp.destination] = true;
 
-         GraphNode l_node = NodePositionConverter.GetNodeFromPosition(m_aiPath.destination);
+         GraphNode l_node = NodePositionConverter.GetNodeFromPosition(m_aiLerp.destination);
 
          if (l_node != null && l_node.Walkable)
          {

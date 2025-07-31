@@ -14,8 +14,6 @@ namespace HypNot.Behaviours.Characters
 
       public override void Start()
       {
-         base.Start();
-
          IsMovable = true;
       }
    }
