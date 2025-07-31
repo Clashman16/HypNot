@@ -6,11 +6,11 @@ using HypNot.Spawners;
 using HypNot.Utils;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace HypNot.Behaviours.Characters
 {
-   public class HypnotizedPersonTargetBehaviour : MonoBehaviour, IPointerClickHandler
+   public class HypnotizedPersonTargetBehaviour : MonoBehaviour
    {
       private HypnotizedPersonDataBehaviour m_data;
 
@@ -28,6 +28,8 @@ namespace HypNot.Behaviours.Characters
 
       AudioSource m_audioPlayer;
 
+      Button m_button;
+
       private void Start()
       {
          m_data = GetComponent<HypnotizedPersonDataBehaviour>();
@@ -37,9 +39,11 @@ namespace HypNot.Behaviours.Characters
          m_audioPlayer = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.SFXPlayerTag).GetComponent<AudioSource>();
 
          m_audioPlayer.volume = PlayerSaveSingleton.Instance.SFXVolume;
+
+         m_button = GetComponentInChildren<Button>();
       }
 
-      public void OnPointerClick(PointerEventData eventData)
+      public void OnClick()
       {
          if(PlayerStateSingleton.Instance.GameScreen == GameScreen.GAME_SCREEN)
          {
@@ -58,6 +62,8 @@ namespace HypNot.Behaviours.Characters
                   CitizenSpawnerSingleton.Instance.Spawn(transform);
 
                   PlayerStateSingleton.Instance.CanSendCitizen = false;
+
+                  m_button.gameObject.SetActive(false);
                }
             }
          }
