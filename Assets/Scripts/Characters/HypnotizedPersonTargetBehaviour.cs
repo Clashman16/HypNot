@@ -112,6 +112,8 @@ namespace HypNot.Behaviours.Characters
          m_audioPlayer.clip = SFXDatabaseSingleton.Instance.Database.OneMoreCitizenSound;
 
          m_audioPlayer.Play();
+
+         HypnotizedPersonSpawnerSingleton.Instance.Spawn();
       }
    }
 }
