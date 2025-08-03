@@ -1,3 +1,4 @@
+using HypNot.Player;
 using UnityEngine;
 
 namespace HypNot.Behaviours.UI
@@ -19,12 +20,29 @@ namespace HypNot.Behaviours.UI
          }
       }
 
+      private SwipeControllerBehaviour m_swipeController;
+
+      public SwipeControllerBehaviour SwipeController
+      {
+         get
+         {
+            if (m_swipeController == null)
+            {
+               m_swipeController = FindObjectOfType<SwipeControllerBehaviour>();
+            }
+
+            return m_swipeController;
+         }
+      }
+
       public virtual void Reset()
       {
          if(!HasTranslated)
          {
             TranslateCanvas();
          }
+
+         SwipeController.enabled = false;
       }
 
       public void TranslateCanvas()
