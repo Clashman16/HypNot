@@ -1,11 +1,12 @@
-using HypNot.Behaviours.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace HypNot.Player
 {
    public class SwipeControllerBehaviour : MonoBehaviour
    {
-      public float m_swipeThreshold = 50f;
+      #region Swipe Data
+      private float m_swipeThreshold;
 
       private Vector2 m_startTouchPosition;
 
@@ -13,25 +14,31 @@ namespace HypNot.Player
 
       private Vector3 m_targetPosition;
 
-      private Vector3[] m_roomPositions;
+      private float m_maxPushDistance;
 
-      private int m_currentRoomIndex;
+      private float m_sensitivity;
+
+      #endregion
+
+      #region Clamp Data
+
+      private Camera m_mainCamera;
+
+      private Bounds m_moveArea;
+
+      #endregion
 
       void Start()
       {
-         m_roomPositions = new Vector3[]
-         {
-            new Vector3(-5, 10, 0),
-            new Vector3(0, 10, 0),
-            new Vector3(5, 10, 0),
-            new Vector3(-5, 0, 0),
-            Vector3.zero,
-            new Vector3(5, 0, 0)
-         };
+         m_swipeThreshold = 50f;
 
-         m_currentRoomIndex = 4;
+         m_maxPushDistance = 3;
 
-         transform.position = m_roomPositions[m_currentRoomIndex];
+         m_sensitivity = 0.02f;
+
+         m_mainCamera = Camera.main;
+
+         m_moveArea = FindObjectOfType<PolygonCollider2D>().bounds;
       }
 
       void Update()
@@ -41,6 +48,7 @@ namespace HypNot.Player
          if (m_isMoving)
          {
             transform.position = m_targetPosition;
+
             m_isMoving = false;
          }
       }
@@ -63,106 +71,30 @@ namespace HypNot.Player
 
                if (l_swipeDelta.magnitude > m_swipeThreshold)
                {
-                  Direction l_swipeDirection;
+                  Vector3 l_pushDirection = Vector3.zero;
 
                   if (Mathf.Abs(l_swipeDelta.x) > Mathf.Abs(l_swipeDelta.y))
                   {
-                     l_swipeDirection = l_swipeDelta.x > 0 ? Direction.LEFT : Direction.RIGHT;
+
+                     l_pushDirection = (l_swipeDelta.x > 0) ? Vector3.left : Vector3.right;
                   }
                   else
                   {
-                     l_swipeDirection = l_swipeDelta.y > 0 ? Direction.DOWN : Direction.UP;
+                     l_pushDirection = (l_swipeDelta.y > 0) ? Vector3.down : Vector3.up;
                   }
 
-                  MoveToRoom(l_swipeDirection);
+                  float l_pushDistance = Mathf.Min(l_swipeDelta.magnitude * m_sensitivity, m_maxPushDistance);
+
+                  Vector3 l_newTarget = m_targetPosition + l_pushDirection * l_pushDistance;
+
+                  l_newTarget.x = Mathf.Clamp(l_newTarget.x, m_moveArea.min.x, m_moveArea.max.x);
+                  l_newTarget.y = Mathf.Clamp(l_newTarget.y, m_moveArea.min.y, m_moveArea.max.y);
+
+                  m_targetPosition = l_newTarget;
+
+                  m_isMoving = true;
                }
             }
-         }
-      }
-
-      private void MoveToRoom(Direction p_swipeDirection)
-      {
-         int l_newIndex = m_currentRoomIndex;
-
-         switch (m_currentRoomIndex)
-         {
-            case 0:
-               if (p_swipeDirection == Direction.RIGHT)
-               {
-                  l_newIndex = 1;
-               }
-               else if (p_swipeDirection == Direction.DOWN)
-               {
-                  l_newIndex = 3;
-               }
-               break;
-            case 1:
-               if (p_swipeDirection == Direction.LEFT)
-               {
-                  l_newIndex = 0;
-               }
-               else if (p_swipeDirection == Direction.RIGHT)
-               {
-                  l_newIndex = 2;
-               }
-               else if (p_swipeDirection == Direction.DOWN)
-               {
-                  l_newIndex = 4;
-               }
-               break;
-            case 2:
-               if (p_swipeDirection == Direction.LEFT)
-               {
-                  l_newIndex = 1;
-               }
-               else if (p_swipeDirection == Direction.DOWN)
-               {
-                  l_newIndex = 5;
-               }
-               break;
-            case 3:
-               if (p_swipeDirection == Direction.RIGHT)
-               {
-                  l_newIndex = 4;
-               }
-               else if (p_swipeDirection == Direction.UP)
-               {
-                  l_newIndex = 0;
-               }
-               break;
-            case 4:
-               if (p_swipeDirection == Direction.LEFT)
-               {
-                  l_newIndex = 3;
-               }
-               else if (p_swipeDirection == Direction.RIGHT)
-               {
-                  l_newIndex = 5;
-               }
-               else if (p_swipeDirection == Direction.UP)
-               {
-                  l_newIndex = 1;
-               }
-               break;
-            case 5:
-               if (p_swipeDirection == Direction.LEFT)
-               {
-                  l_newIndex = 4;
-               }
-               else if (p_swipeDirection == Direction.UP)
-               {
-                  l_newIndex = 2;
-               }
-               break;
-         }
-
-         if (l_newIndex != m_currentRoomIndex)
-         {
-            m_currentRoomIndex = l_newIndex;
-
-            m_targetPosition = m_roomPositions[m_currentRoomIndex];
-
-            m_isMoving = true;
          }
       }
    }
