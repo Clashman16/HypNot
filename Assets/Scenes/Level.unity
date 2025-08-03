@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 30263357}
   - component: {fileID: 30263359}
   - component: {fileID: 30263358}
+  - component: {fileID: 30263360}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 793429123, guid: d46673cac9a8aab4290e2bbfd5823335, type: 3}
+  m_Sprite: {fileID: -1713577232, guid: 0db411947fd533a468575a676e5347a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -266,6 +267,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30263356}
   m_CullTransparentMesh: 1
+--- !u!95 &30263360
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30263356}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e0c74581bcc4fa45ae511dc8358dd0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &31202692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1169,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1836,6 +1858,7 @@ GameObject:
   - component: {fileID: 350101121}
   - component: {fileID: 350101123}
   - component: {fileID: 350101122}
+  - component: {fileID: 350101124}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -1882,7 +1905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 793429123, guid: d46673cac9a8aab4290e2bbfd5823335, type: 3}
+  m_Sprite: {fileID: -1713577232, guid: 0db411947fd533a468575a676e5347a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1900,6 +1923,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350101120}
   m_CullTransparentMesh: 1
+--- !u!95 &350101124
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350101120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e0c74581bcc4fa45ae511dc8358dd0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &362349318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,7 +3138,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6024,7 +6068,7 @@ Tilemap:
       - {fileID: -825783162, guid: 76585bf30abd53140a33ac85e137af45, type: 3}
       - {fileID: -825783162, guid: 76585bf30abd53140a33ac85e137af45, type: 3}
       - {fileID: -825783162, guid: 76585bf30abd53140a33ac85e137af45, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 7, y: 7, z: 0}
@@ -7983,6 +8027,7 @@ GameObject:
   - component: {fileID: 789908911}
   - component: {fileID: 789908913}
   - component: {fileID: 789908912}
+  - component: {fileID: 789908914}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -8029,7 +8074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 793429123, guid: d46673cac9a8aab4290e2bbfd5823335, type: 3}
+  m_Sprite: {fileID: -1713577232, guid: 0db411947fd533a468575a676e5347a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8047,6 +8092,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789908910}
   m_CullTransparentMesh: 1
+--- !u!95 &789908914
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789908910}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e0c74581bcc4fa45ae511dc8358dd0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &873431039
 GameObject:
   m_ObjectHideFlags: 0
@@ -8984,6 +9050,7 @@ GameObject:
   - component: {fileID: 1167186308}
   - component: {fileID: 1167186310}
   - component: {fileID: 1167186309}
+  - component: {fileID: 1167186311}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -9030,7 +9097,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 793429123, guid: d46673cac9a8aab4290e2bbfd5823335, type: 3}
+  m_Sprite: {fileID: -1713577232, guid: 0db411947fd533a468575a676e5347a1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9048,6 +9115,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167186307}
   m_CullTransparentMesh: 1
+--- !u!95 &1167186311
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167186307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e0c74581bcc4fa45ae511dc8358dd0c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1207063341
 GameObject:
   m_ObjectHideFlags: 0
@@ -11421,7 +11509,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -13027,7 +13115,7 @@ Tilemap:
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: 13, z: 0}
@@ -13117,7 +13205,7 @@ Tilemap:
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -11, y: 20, z: 0}
@@ -13171,7 +13259,7 @@ Tilemap:
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 6, y: 25, z: 0}
@@ -13225,7 +13313,7 @@ Tilemap:
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
       - {fileID: 1188209099, guid: da1cf5dc4dc5a5d428282045c1bf5692, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -27861,7 +27949,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
