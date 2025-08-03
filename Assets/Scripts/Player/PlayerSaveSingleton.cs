@@ -27,7 +27,7 @@ namespace HypNot.Player
 
       public int TimerMax
       {
-         get => PlayerPrefs.GetInt(string.Concat(m_prefPrefix, "TimerMax"), 1);
+         get => PlayerPrefs.GetInt(string.Concat(m_prefPrefix, "TimerMax"), 3);
          set => PlayerPrefs.SetInt(string.Concat(m_prefPrefix, "TimerMax"), value);
       }
 
