@@ -33,14 +33,17 @@ namespace HypNot.Behaviours.UI
          {
             m_type = value;
 
+            if (m_animator == null)
+            {
+               m_animator = GetComponentInChildren<Animator>(true);
+            }
+
             m_animator.SetTrigger(m_type.ToString().ToLower());
          }
       }
 
-      void Start()
+      public void Reset()
       {
-         m_animator = GetComponentInChildren<Animator>();
-
          Type = PlayerStateSingleton.Instance.FirstCitizenType;
       }
    }

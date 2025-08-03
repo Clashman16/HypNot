@@ -35,6 +35,8 @@ namespace HypNot.Behaviours.UI
                m_backgroundMusic.UnPause();
             }
          }
+
+         GetComponentInChildren<CitizenIndicatorBehaviour>().Reset();
       }
    }
 }
