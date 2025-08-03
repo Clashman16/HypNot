@@ -6,8 +6,6 @@ namespace HypNot.Behaviours.UI
 {
    public class GameCanvasBehaviour : CanvasBehaviour
    {
-      PauseButtonBehaviour m_pauseButton;
-
       AudioSource m_backgroundMusic;
 
       GameScreen m_lastGameScreen;
@@ -19,13 +17,6 @@ namespace HypNot.Behaviours.UI
 
       public override void Reset()
       {
-         if(m_pauseButton == null)
-         {
-            m_pauseButton = gameObject.GetComponentInChildren<PauseButtonBehaviour>();
-         }
-
-         m_pauseButton.ResetIcon();
-
          if(m_backgroundMusic == null)
          {
             m_backgroundMusic = GameObject.FindGameObjectWithTag(TagDatabaseSingleton.Instance.BackgroundMusicPlayerTag).GetComponent<AudioSource>();
@@ -44,6 +35,8 @@ namespace HypNot.Behaviours.UI
                m_backgroundMusic.UnPause();
             }
          }
+
+         GetComponentInChildren<CitizenIndicatorBehaviour>().Reset();
       }
    }
 }

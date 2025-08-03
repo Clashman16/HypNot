@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d46673cac9a8aab4290e2bbfd5823335
+guid: 975771d4c086f0f4caea29ca3c6289a8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: classic_button_0
+      name: go_back_button_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26eb0f8d2ae9ad1499b08713e641af96
-      internalID: 793429123
+      spriteID: 48282548a2c8c4247b7679ca9173e817
+      internalID: -2607772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: classic_button_1
+      name: go_back_button_1
       rect:
         serializedVersion: 2
         x: 16
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e98378aef0b86254b91418b34a05f652
-      internalID: 232844338
+      spriteID: 7df8c30b68aafbc45aa86e1cba0a6849
+      internalID: 2085327767
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      classic_button_0: 793429123
-      classic_button_1: 232844338
+      go_back_button_0: -2607772
+      go_back_button_1: 2085327767
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
