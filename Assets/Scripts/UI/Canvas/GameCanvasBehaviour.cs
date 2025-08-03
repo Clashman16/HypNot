@@ -6,9 +6,11 @@ namespace HypNot.Behaviours.UI
 {
    public class GameCanvasBehaviour : CanvasBehaviour
    {
-      AudioSource m_backgroundMusic;
+      private AudioSource m_backgroundMusic;
 
-      GameScreen m_lastGameScreen;
+      private GameScreen m_lastGameScreen;
+
+      private CitizenIndicatorBehaviour m_citizenIndicator;
 
       public GameScreen LastGameScreen
       {
@@ -36,7 +38,14 @@ namespace HypNot.Behaviours.UI
             }
          }
 
-         GetComponentInChildren<CitizenIndicatorBehaviour>().Reset();
+         if(m_citizenIndicator == null)
+         {
+            m_citizenIndicator = GetComponentInChildren<CitizenIndicatorBehaviour>();
+         }
+
+         m_citizenIndicator.Reset();
+
+         SwipeController.enabled = true;
       }
    }
 }

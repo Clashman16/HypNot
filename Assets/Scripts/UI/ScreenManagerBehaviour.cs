@@ -53,6 +53,8 @@ namespace HypNot.Behaviours.UI
                m_screens[5].SetActive(false);
             }
          }
+
+         FindObjectOfType<SwipeControllerBehaviour>().enabled = false;
       }
 
       void Update()
