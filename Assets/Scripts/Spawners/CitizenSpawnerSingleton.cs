@@ -96,10 +96,6 @@ namespace HypNot.Spawners
 
       private void ActiveCitizenAI(CitizenDataBehaviour p_citizen, Transform p_citizenTarget)
       {
-         p_citizen.OrderInLayer = MapManagerSingleton.Instance.OrderInLayer;
-
-         MapManagerSingleton.Instance.OrderInLayer += 1;
-
          HypnotizedPersonTargetBehaviour l_target = p_citizenTarget.GetComponent<HypnotizedPersonTargetBehaviour>();
 
          Dictionary<Vector2, bool> l_spots = l_target.Data.OccupiedCitizenSpots;
@@ -130,8 +126,6 @@ namespace HypNot.Spawners
          l_ai.Target = l_target;
          l_ai.AILerp = l_path;
          l_ai.Destination = l_path.destination;
-
-         MapManagerSingleton.Instance.AddCollidable(p_citizen);
       }
 
       public override void AddToRecycleBin(GameObject p_object)

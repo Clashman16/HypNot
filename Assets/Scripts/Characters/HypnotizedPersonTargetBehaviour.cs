@@ -84,8 +84,6 @@ namespace HypNot.Behaviours.Characters
 
          foreach (CitizenDataBehaviour l_citizen in m_citizens)
          {
-            MapManagerSingleton.Instance.RemoveCollidable(l_citizen);
-
             CitizenSpawnerSingleton.Instance.AddToRecycleBin(l_citizen.gameObject);
          }
 
@@ -104,8 +102,6 @@ namespace HypNot.Behaviours.Characters
          MapManagerSingleton.Instance.HypnotizedPersonMana[l_mana] = l_manaCount == 0 ? 0 : l_manaCount - 1;
 
          CitizenSpawnerSingleton.Instance.AddToTypeRecycleBin(l_type);
-
-         MapManagerSingleton.Instance.RemoveCollidable(m_data);
 
          HypnotizedPersonSpawnerSingleton.Instance.WaveSpawner.AddToRecycleBin(gameObject);
 
